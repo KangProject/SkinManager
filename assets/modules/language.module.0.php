@@ -23,7 +23,7 @@ class Language {
 			$query->closeCursor();
 		}
 
-		self::setLanguage($_SESSION['language'] = isset($_URL['l'])?$_URL['l']:(isset($_SESSION['language'])?$_SESSION['language']:'fr_FR'));
+		self::setLanguage($_SESSION['language'] = isset($_URL['l'])?$_URL['l']:(isset($_SESSION['language'])?$_SESSION['language']:'en_EN'));
 	}
 
 	# load a language translations file and store it
