@@ -35,8 +35,7 @@
 					<li><a href="account/">'.Language::translate('ACCOUNT').'</a></li>
 					<li><a href="logout/">'.Language::translate('DISCONNECT').'</a></li>';
 				else
-					echo '<li><a href="register/">'.Language::translate('REGISTER').'</a></li>
-					<li><a href="http://bookshop.fr.nf">Bookshop</a></li>';
+					echo '<li><a href="register/">'.Language::translate('REGISTER').'</a></li>';
 				?>
 			</ul>
 		</nav>
