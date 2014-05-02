@@ -14,17 +14,10 @@ class Database {
 		if(!self::$instance instanceOf PDO) {
 			$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 
-			if($_SERVER["SERVER_ADDR"] == "127.0.0.1") {
-				$mysql_host = '127.0.0.1';
-				$mysql_database = 'skinmanager';
-				$mysql_user = 'root';
-				$mysql_password = '';
-			} else {
-				$mysql_host = 'db.geekimo.me';
-				$mysql_database = 'skinmanager';
-				$mysql_user = 'ephys';
-				$mysql_password = 'L00kingForLostLove';
-			}
+			$mysql_host = '127.0.0.1';
+			$mysql_database = 'skinmanager';
+			$mysql_user = 'root';
+			$mysql_password = '';
 
 			try {
 				$bdd = new PDO('mysql:host='.$mysql_host.';dbname='.$mysql_database, $mysql_user, $mysql_password, $pdo_options);
