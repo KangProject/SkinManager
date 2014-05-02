@@ -7,7 +7,7 @@
  */
 class API {
 	private $refl = null;
-	private $allowedOrigins = ['http://skinmanager.fr.nf', 'http://skinmanager'];
+	private $allowedOrigins = ['http://skin.outadoc.fr', 'http://skin'];
 
 	public function __construct() {
 		if(!class_exists('Database'))

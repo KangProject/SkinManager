@@ -184,7 +184,7 @@ SkinManager.prototype.loadSkin = function(skinId) {
 			$.ajax({
 				type: "POST",
 				url: "json/",
-				data: { method: "switchSkin", url: encodeURIComponent('http://minecraft.net/profile/skin/remote?url=http://skinmanager.fr.nf/json/?method=getSkin&id='+skinId), passphrase: passphrase },
+				data: { method: "switchSkin", url: encodeURIComponent('http://minecraft.net/profile/skin/remote?url=http://skin.outadoc.fr/json/?method=getSkin&id='+skinId), passphrase: passphrase },
 				success: function(json){
 					try {
 						json = $.parseJSON(json);
@@ -206,7 +206,7 @@ SkinManager.prototype.loadSkin = function(skinId) {
 			return false;
 		}, true);
 	} else
-		buttonSwitch.href = 'http://minecraft.net/profile/skin/remote?url=http://skinmanager.fr.nf/json/?method=getSkin&id='+skinId;
+		buttonSwitch.href = 'http://minecraft.net/profile/skin/remote?url=http://skin.outadoc.fr/json/?method=getSkin&id='+skinId;
 
 	buttonSwitch.innerHTML = _LANGUAGE['SKIN_SWITCH'];
 	actionDiv.appendChild(buttonSwitch);

@@ -21,7 +21,7 @@ class skin_creator {
 
 		if($isTemp) {
 			if(!is_array($image) || ($image[3] != 'width="64" height="32"') || ($image['mime'] != 'image/png'))
-				$url = "http://beta.skinmanager.fr.nf/assets/img/char.png";
+				$url = "http://beta.skin.outadoc.fr/assets/img/char.png";
 
 			header('Expires: 0');
 			header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
