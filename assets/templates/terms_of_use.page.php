@@ -58,7 +58,7 @@
 		<h4>2. DESCRIPTION DES SERVICES</h4>
 			<p>Skin Manager offre sur son site web la possibilité de gérer une galerie de skins personnelle, et de modifier le skin utilisé sur le compte Minecraft.net facilement.</p>
 			<p>Ce site web permet d'accéder a de multiples skins accompagnés de leur description. Ceux-ci ne sont pas sous la responsabilité de Skin Manager mais uniquement sous celle de l'utilisateur les ayant mis en ligne sur Skin Manager</p>
-			<p>En cas de contenu pouvant hurter la sensibilité des utilisateurs, contactez nous via la <a href="http://ephys.fr.nf/contact/">page de contact</a>. Le contenu sera retiré dans les plus brefs délais</p>
+			<p>En cas de contenu pouvant hurter la sensibilité des utilisateurs, contactez nous via la <a href="http://dev.outadoc.fr/contact.html">page de contact</a>. Le contenu sera retiré dans les plus brefs délais</p>
 			<p>Afin d'utiliser les Services, il vous faut un accès Internet, soit directement accessible sur votre ordinateur, soit par l'intermédiaire d'autres supports tels que le téléphone mobile, les assistants personnels. Les éventuels frais correspondants à ces accès sont à votre seule charge. De plus, vous devez vous munir de tout matériel nécessaire afin d'assurer cette connexion au réseau Internet.</p>
 		<h4>3. OBLIGATION D'INSCRIPTION ET D'IDENTIFICATION</h4>
 			<p>L'utilisation des services proposés par Skin Manager nécessitent la possession d'un compte Skin Manager ainsi que la fourniture d'informations permettant l'identification de l'utilisateur, renseignées dans un formulaire d'inscription aux services.</p>
@@ -83,6 +83,6 @@
 			<p>La responsabilité de Skin Manager ne pourra être davantage engagée, sans que cette liste ne soit exhaustive, du fait de la perte de profits, de données ou informations stockées sur les Services, ni du fait de dommages indirects. L'ensemble des utilisateurs étant par ailleurs invités à conserver une copie de sauvegarde de toutes les données et Contenus stockés sur les Services.</p>
 			<p>Vous acceptez de défendre et de dégager de toute responsabilité Skin Manager et ses filiales, membres de la direction, agents, sous-traitants, employés, partenaires, et concédants de licence vis-à-vis de toute réclamation ou plainte, y compris frais d’avocat et de justice, qui serait présentée sur la base des contenus que vous envoyez, stockez, publiez, transmettez, modifiez ou mettez à disposition d’une manière ou d’une autre via les Services, de votre utilisation des Services, de vos connexions aux Services, d’une infraction de votre part aux présentes TOS, d’une violation de votre part des lois applicables ou d’une atteinte de votre part aux droits d’une autre personne physique ou morale.</p>
 		<h4>10. SERVICE CLIENTÈLE</h4>
-			<p>En cas de difficulté technique, de propositions, d'idées à proposer ou de réclamation, vous pouvez contacter le titulaire du site, @EphysPotato, via son <a href="http://ephys.fr.nf/">site Internet ephys.fr.nf</a> ou via son <a href="http://twitter.com/EphysPotato">compte twitter</a>.
-		<p>Version 0.3 - 29 juillet 2013</p>
+			<p>En cas de difficulté technique, de propositions, d'idées à proposer ou de réclamation, vous pouvez contacter outa[dev] via <a href="http://dev.outadoc.fr/contact.html">dev.outadoc.fr</a> ou via <a href="http://twitter.com/outadev">Twitter</a>.
+		<p>Version 0.4 - 2 mai 2014</p>
 </section>
