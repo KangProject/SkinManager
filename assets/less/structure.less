@@ -1,0 +1,172 @@
+body {
+	font-family: 'Minecraft', Helvetica, Arial, sans-serif;
+}
+
+#body {
+	overflow: auto;
+	-webkit-transition:left linear 0.4s;
+	-moz-transition:left linear 0.4s;
+	-ms-transition:left linear 0.4s;
+	-o-transition:left linear 0.4s;
+	transition:left linear 0.4s;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgb(69,72,77);
+	background-image: url('../img/dark_wall.png');
+}
+
+section {
+	background-color: rgb(249,252,247);
+	background-image: url('../img/whitey.png');
+	width: auto;
+	min-height: 20px;
+	margin: 25px auto;
+	clear: both;
+	overflow: hidden;
+	&#footer p {
+		text-align: center;
+		padding: 0;
+		margin: 10px;
+	}
+}
+
+footer {
+	position: fixed;
+	right: 0;
+	bottom: -30px;
+	overflow: hidden;
+
+	-webkit-transition:bottom linear 0.2s;
+	-moz-transition:bottom linear 0.2s;
+	-ms-transition:bottom linear 0.2s;
+	-o-transition:bottom linear 0.2s;
+	transition:bottom linear 0.2s;
+
+	&:hover {
+		bottom: -5px;
+	}
+
+	img {
+		margin: 0 5px;
+	}
+}
+
+#userSkinList {
+	margin: 20px;
+	img {
+		margin: 10px;
+	}
+}
+
+aside {
+	z-index: 1;
+	position: absolute;
+	width: 215px;
+	left: -215px;
+
+	display: block;
+	height: 100%;
+
+	-webkit-transition:left linear 0.4s;
+	-moz-transition:left linear 0.4s;
+	-ms-transition:left linear 0.4s;
+	-o-transition:left linear 0.4s;
+	transition:left linear 0.4s;
+
+	background-color: rgb(249,252,247);
+	text-align: center;
+
+	div {
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+		position: absolute;
+		top: 0;
+		z-index: -1;
+
+		img {
+			background-image: url('../img/skinEditor_background.png');
+			background-size: 10px;
+			padding: 5px;
+			height: 120px;
+			margin: 10px;
+			cursor: pointer;
+			border: 1px black solid;
+
+			&.selected {
+				background: #5bc0de;
+			}
+		}
+	}
+
+	input {
+		position: absolute;
+		bottom: 5px;
+		left: 8px;
+		width: 185px;
+	}
+}
+
+nav {
+	h1 {
+		float: left;
+		margin-left: 15px;
+		a {
+			color: #c8c8c8;
+		}
+	}
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	ul {
+		float: right;
+
+		li {
+			font-size: 17px;
+			padding: 0 10px;
+			display: inline-block;
+
+			a {
+				color: #d0d0d0;
+				&:hover {
+					color: #ffffff;
+				}
+
+				&:active {
+
+				}
+			}
+		}
+	}
+}
+
+
+#skinEditor {
+	width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+
+	p {
+		text-align: center;
+	}
+
+	.group {
+		background-color: rgb(200,200,200);
+		margin: 5px;
+		padding: 0 5px;
+		display: inline-block;
+	}
+
+	button {
+		min-width: 70px;
+		font-size: 15px;
+		padding: 7px;
+	}
+}

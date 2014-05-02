@@ -1,0 +1,1 @@
+<section><p class="heroquote">Uhuh, no page here dude, go back.</p><img src="assets/img/herobrine.png"/></section>
