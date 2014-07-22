@@ -76,7 +76,7 @@ class API {
 	}
 
 	private function isEnvProtected() {
-		return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') && in_array($_SERVER['HTTP_ORIGIN'], $this->allowedOrigins);
+		return !isset($_SERVER['HTTP_ORIGIN']) || in_array($_SERVER['HTTP_ORIGIN'], $this->allowedOrigins);
 	}
 
 	private static function user_exists($login) {
