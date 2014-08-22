@@ -20,7 +20,8 @@ class skin_creator {
 		$image = @getimagesize($url);
 
 		if($isTemp) {
-			if(!is_array($image) || ($image[3] != 'width="64" height="32"') || ($image['mime'] != 'image/png'))
+			if(!is_array($image) || ($image[3] != 'width="64" height="32"' && $image[3] != 'width="64" height="64"') 
+				|| ($image['mime'] != 'image/png'))
 				$url = "http://beta.skin.outadoc.fr/assets/img/char.png";
 
 			header('Expires: 0');
@@ -32,7 +33,7 @@ class skin_creator {
 		} else {
 			if(!is_array($image))
 				return ['error' => [Language::translate('ERROR_NO_URL')]];
-			elseif($image[3] != 'width="64" height="32"')
+			elseif($image[3] != 'width="64" height="32"' && $image[3] != 'width="64" height="64"')
 				return ['error' => [Language::translate('ERROR_SKIN_DIM')]];
 			elseif($image['mime'] != 'image/png')
 				return ['error' => [$Language::translate('ERROR_SKIN_TYPE')]];
