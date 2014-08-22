@@ -5,7 +5,7 @@ class Router {
 	const CMS_VERSION = 3.1;
 	const SITE_LOCATION = null;
 	const DEFAULT_PAGE = 'home';
-	const DEV_MODE = true;
+	const DEV_MODE = false;
 
 	const DIR_MODULES = 'modules';
 	const DIR_TEMPLATES = 'templates';
@@ -177,7 +177,7 @@ class Router {
 	}
 
 	private function parseURI($uri) {
-		$url = (self::SITE_LOCATION == null)?$uri:strstr($uri, stripslashes(SITE_LOCATION));
+		$url = (self::SITE_LOCATION == null)?$uri:strstr($uri, stripslashes(self::SITE_LOCATION));
 		return explode('/', strstr($uri, $url));
 	}
 
