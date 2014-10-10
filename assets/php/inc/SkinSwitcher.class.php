@@ -2,10 +2,9 @@
 
 	class SkinSwitcher
 	{
-		private static $WEB_LOGIN_URL = "http://minecraft.net/login";
-		private static $PROFILE_URL = "http://minecraft.net/profile";
-		private static $SKIN_CHANGE_URL = "http://minecraft.net/profile/skin/remote?url=";
-		private static $MC_LOGIN_AUTHENTICATE = "https://authserver.mojang.com/authenticate";
+		private static $WEB_LOGIN_URL = "https://minecraft.net/login";
+		private static $PROFILE_URL = "https://minecraft.net/profile";
+		private static $SKIN_CHANGE_URL = "https://minecraft.net/profile/skin/remote?url=";
 
 		private $ch = null;
 		private $cookieFileName;
@@ -27,7 +26,7 @@
 			unlink($this->cookieFileName);
 		}
 
-		public function switchSkin($url)
+		public function switchSkin($url, $model)
 		{
 			$login = $this->getAuth();
 
@@ -38,35 +37,11 @@
 			if ($token === false)
 				return Language::translate('ERROR_UNKNOW');
 
-			if ($this->doTheSwitch($token, $url) === false)
+			if ($this->doTheSwitch($token, $url, $model) === false)
 				return Language::translate('ERROR_UNKNOW');
 
 			return true;
 		}
-
-		// public function verifyCredentials() {
-		// 	$ch = $this->getCh();
-
-		// 	$params = [
-		// 		'username' => $this->username,
-		// 		'password' => $this->password
-		// 	];
-		// 	$paramStr = self::paramsEncode($params);
-
-		// 	curl_setopt($ch, CURLOPT_HEADER, false);
-		// 	curl_setopt($ch, CURLOPT_NOBODY, false);
-		// 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		// 	curl_setopt($ch, CURLOPT_URL, self::$MC_LOGIN_AUTHENTICATE);
-		// 	curl_setopt($ch, CURLOPT_POST, count($params));
-		// 	curl_setopt($ch, CURLOPT_POSTFIELDS, $paramStr);
-		// 	$page = curl_exec($ch);
-
-		// 	if(curl_errno($ch) !== 0)
-		// 		var_dump(curel_errno($ch));
-		// 	else {
-		// 		echo ($page);
-		// 	}
-		// }
 
 		private function getAuth()
 		{
@@ -143,12 +118,14 @@
 
 		// utils
 
-		private function doTheSwitch($token, $url)
+		private function doTheSwitch($token, $url, $model)
 		{
 			$ch = $this->getCh();
+
 			curl_setopt($ch, CURLOPT_URL, self::$SKIN_CHANGE_URL . $url);
 			curl_setopt($ch, CURLOPT_POST, 1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, 'authenticityToken=' . urlencode($token));
+			curl_setopt($ch, CURLOPT_POSTFIELDS, 'model=' . urlencode($model));
 
 			$page = curl_exec($ch);
 

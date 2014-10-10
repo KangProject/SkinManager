@@ -1,5 +1,5 @@
 <?php
-	require_once(dirname(__FILE__) . '/skin_formater.inc.php');
+	require_once('skin_formater.inc.php');
 
 	class skin_creator
 	{
@@ -13,7 +13,7 @@
 				if (!is_array($image) || ($image[3] != 'width="64" height="32"' && $image[3] != 'width="64" height="64"')
 					|| ($image['mime'] != 'image/png')
 				)
-					$url = "http://beta.skin.outadoc.fr/assets/img/char.png";
+					$url = "http://skin.outadoc.fr/assets/img/char.png";
 
 				header('Expires: 0');
 				header('Cache-Control: must-revalidate, post-check=0, pre-check=0');

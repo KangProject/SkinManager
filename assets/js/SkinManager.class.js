@@ -189,7 +189,8 @@ SkinManager.prototype.loadSkin = function (skinId) {
                 data: {
                     method: "switchSkin",
                     url: encodeURIComponent('http://minecraft.net/profile/skin/remote?url=http://skin.outadoc.fr/json/?method=getSkin&id=' + skinId),
-                    passphrase: passphrase
+                    passphrase: passphrase,
+                    model: self.currentSkin.model
                 },
                 success: function (json) {
                     try {

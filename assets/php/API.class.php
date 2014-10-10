@@ -583,7 +583,7 @@
 			return $uploader->updateSkin($image, $id);
 		}
 
-		public function switchSkin($url, $passphrase)
+		public function switchSkin($url, $passphrase, $model = "steve")
 		{
 			if (!self::isLogged())
 				return ['error' => ['user not logged in']];
@@ -609,7 +609,7 @@
 
 				$skinswitch = new SkinSwitcher($data['minecraft_username'], $minecraft_password);
 
-				$result = $skinswitch->switchSkin($url);
+				$result = $skinswitch->switchSkin($url, $model);
 
 				if ($result !== true)
 					return ['error' => [$result]];
