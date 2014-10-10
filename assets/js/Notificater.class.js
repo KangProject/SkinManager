@@ -15,10 +15,13 @@ var Notificater = function () {
     this.notify = function (error) {
         self.show();
 
-        if (notification_area.innerText)
+        setTimeout(this.hide, 3000);
+
+        if (notification_area.innerText) {
             notification_area.innerText = error.htmlsanitise();
-        else
+        } else {
             notification_area.textContent = error.htmlsanitise();
+        }
     };
 
     notification_area.className = 'notification';
