@@ -6,7 +6,10 @@
 		const CMS_VERSION = 3.1;
 		const SITE_LOCATION = null;
 		const DEFAULT_PAGE = 'home';
-		const DEV_MODE = false;
+		const DEV_MODE = true;
+
+		const WEBSITE_ROOT_DEV = "http://localhost/SkinManager/";
+		const WEBSITE_ROOT_PROD = "http://skin.outadoc.fr/";
 
 		const DIR_MODULES = 'modules';
 		const DIR_TEMPLATES = 'templates';
@@ -19,18 +22,17 @@
 		private static $response_code = 200;
 		private static $redirect = false;
 
-		//response code, setting default to 200
-		public $url;
-		private $subdomains = array('clockdown');
-
 		public function __construct($url)
 		{
 			global $_URL;
 
-			if (self::DEV_MODE)
+			if (self::DEV_MODE) {
 				ini_set('display_errors', 'on');
-			else
+				define('WEBSITE_ROOT', self::WEBSITE_ROOT_DEV);
+			} else {
 				ini_set('display_errors', 'off');
+				define('WEBSITE_ROOT', self::WEBSITE_ROOT_PROD);
+			}
 
 			if (substr($url, -1) != '/') {
 				header('Location: ' . $url . '/');
@@ -42,12 +44,7 @@
 			$this->url          = $this->parseURI($url);
 			self::$initial_page = self::$page = (isset($this->url[1]) && !empty($this->url[1])) ? $this->url[1] : self::DEFAULT_PAGE;
 
-			$_URL = $this->extractDataFromURL($this->url);
-
-			// if(isset($_SERVER['REDIRECT_QUERY_STRING']))
-			// 	$_GET = $this->parseGET($_SERVER['REDIRECT_QUERY_STRING']);
-
-
+			$_URL     = $this->extractDataFromURL($this->url);
 			$_REQUEST = array_merge($_REQUEST, $_URL);
 
 			if (!self::DEV_MODE) {
@@ -57,25 +54,16 @@
 				ob_start();
 			}
 
-			if (!defined('DS'))
-				define('DS', DIRECTORY_SEPARATOR);
-			define('ROOT', dirname(__FILE__) . DS);
-
-			define('MAIN_FOLDER', $this->get_main_folder());
-			define('WEBSITE_ROOT', 'http://' . MAIN_FOLDER);
+			define('ROOT', dirname(__FILE__) . '/');
 			define('PAGE_RELATIVE', str_repeat('../', count($this->url) - 2) . self::$page . '/');
-
-			foreach ($this->subdomains as $subdomain) {
-				define(strtoupper($subdomain) . '_ROOT', 'http://' . $subdomain . '.' . $this->get_main_folder());
-			}
 
 			$this->loadModules();
 			self::setResponseCode($this->getDefaultResponseCode());
 
 			if (self::$initial_page === self::API_URL) {
 				self::setResponseCode(200);
+				require_once(ROOT . 'assets/' . self::DIR_SCRIPTS . '/API.class.php');
 
-				require_once(ROOT . 'assets' . DS . self::DIR_SCRIPTS . DS . 'API.class.php');
 				if (get_magic_quotes_gpc()) {
 					array_walk_recursive($_REQUEST, 'stripslashes_gpc');
 				}
@@ -85,21 +73,22 @@
 					$input = stripslashes($input);
 				}
 
-				$api = new \API();
-
+				$api    = new \API();
 				$result = $api->selectMethod($_REQUEST);
 
 				if (isset($result['error_code']))
 					self::setResponseCode($result['error_code']);
 
-				if ($result !== null)
+				if ($result !== null) {
 					echo json_encode($result);
-			} elseif (self::isAjax()) {
-				include_once ROOT . 'assets' . DS . self::DIR_TEMPLATES . DS . self::$page . '.page.php';
+				}
+
+			} else if (self::isAjax()) {
+				include_once ROOT . 'assets/' . self::DIR_TEMPLATES . '/' . self::$page . '.page.php';
 			} else {
-				include_once ROOT . 'assets' . DS . self::DIR_TEMPLATES . DS . 'header.tpl.php';
-				include_once ROOT . 'assets' . DS . self::DIR_TEMPLATES . DS . self::$page . '.page.php';
-				include_once ROOT . 'assets' . DS . self::DIR_TEMPLATES . DS . 'footer.tpl.php';
+				include_once ROOT . 'assets/' . self::DIR_TEMPLATES . '/header.tpl.php';
+				include_once ROOT . 'assets/' . self::DIR_TEMPLATES . '/' . self::$page . '.page.php';
+				include_once ROOT . 'assets/' . self::DIR_TEMPLATES . '/' . 'footer.tpl.php';
 			}
 
 			//now, headers has been sent, it's time to send buffer to the output, let's flush !
@@ -136,30 +125,25 @@
 			return $getList;
 		}
 
-		private function get_main_folder()
-		{
-			$dir = strrev(realpath(dirname(__FILE__)));
-			return str_replace('\\', '/', $_SERVER['HTTP_HOST'] . strrev(substr($dir, 0, -(strlen($_SERVER['DOCUMENT_ROOT'])))) . '/');
-		}
-
 		private function loadModules()
 		{
-			if (!is_dir(ROOT . 'assets' . DS . self::DIR_MODULES))
-				return;
+			if (!is_dir(ROOT . 'assets/' . self::DIR_MODULES)) return;
 
 			$loadList = array();
-			foreach (glob(ROOT . 'assets' . DS . self::DIR_MODULES . DS . '*.module.*.php', GLOB_ERR) as $filename) {
+
+			foreach (glob(ROOT . 'assets/' . self::DIR_MODULES . '/*.module.*.php', GLOB_ERR) as $filename) {
 				$file = explode('.', basename($filename));
-				if (!is_numeric($file[2]))
-					throw new Exception('id is not numeric ' . $file[2]);
 
-				if (isset($loadList[$file[2]]))
-					throw new Exception('Duplicate module id ' . $file[2]);
-				else
+				if (!is_numeric($file[2])) {
+					throw new \Exception('id is not numeric ' . $file[2]);
+				}
+
+				if (isset($loadList[$file[2]])) {
+					throw new \Exception('Duplicate module id ' . $file[2]);
+				} else {
 					$loadList[$file[2]] = $filename;
+				}
 			}
-
-			$loadList = $loadList;
 
 			foreach ($loadList as $module) {
 				require_once $module;
@@ -173,11 +157,13 @@
 
 		private function getDefaultResponseCode()
 		{
-			if (is_numeric(self::$page))
+			if (is_numeric(self::$page)) {
 				return intval(self::$page);
+			}
 
-			if (!file_exists(ROOT . 'assets' . DS . self::DIR_TEMPLATES . DS . self::$page . '.page.php'))
+			if (!file_exists(ROOT . 'assets/' . self::DIR_TEMPLATES . '/' . self::$page . '.page.php')) {
 				return self::$page = 404;
+			}
 
 			return self::$response_code;
 		}
@@ -211,18 +197,6 @@
 			return ob_gzhandler($buffer, 5);
 		}
 
-		private function parseGET($query)
-		{
-			$queryParts = explode('&', $query);
-
-			$params = array();
-			foreach ($queryParts as $param) {
-				$item             = explode('=', $param);
-				$params[$item[0]] = isset($item[1]) ? $item[1] : null;
-			}
-
-			return $params;
-		}
 	}
 
 	if (!function_exists('http_response_code')) {
@@ -268,9 +242,9 @@
 			} else {
 				$code = (isset($GLOBALS['http_response_code']) ? $GLOBALS['http_response_code'] : 200);
 			}
+
 			return $code;
 		}
 	}
 
-	$router = new router($_SERVER['REDIRECT_URL']);
-	?>
+	new router(str_replace('/SkinManager', '', $_SERVER['REDIRECT_URL']));

@@ -9,30 +9,36 @@
 	class API
 	{
 		private $refl = null;
-		private $allowedOrigins = ['http://skin.outadoc.fr', 'http://skin'];
+		private $allowedOrigins = ['http://skin.outadoc.fr', 'http://skin', 'http://localhost'];
 
 		public function __construct()
 		{
-			if (!class_exists('Database'))
+			if (!class_exists('Database')) {
 				require_once dirname(__FILE__) . '/inc/Database.class.php';
+			}
 		}
 
 		public function selectMethod($data)
 		{
 			if (isset($data['method']) && $this->methodExists($data['method'])) {
-				if ($this->methodIs("protected", $data['method']) && $this->isEnvProtected())
+
+				if ($this->methodIs("protected", $data['method']) && $this->isEnvProtected()) {
 					$this->getRefl($data['method'])->setAccessible(true);
-				elseif (!$this->methodIs("public", $data['method']))
+				} else if (!$this->methodIs("public", $data['method'])) {
 					return ['error_code' => 403, 'error' => ['Access denied']];
+				}
 
 				$message = $this->argsMatch($data, $data['method']);
-				if ($message !== true)
+
+				if ($message !== true) {
 					return $message;
-				else {
+				} else {
 					return $this->callMethod($data['method'], $data);
 				}
-			} else
+
+			} else {
 				return ['error_code' => 404, 'error' => ['Unknown method']];
+			}
 		}
 
 		private function methodExists($method)
@@ -654,7 +660,7 @@
 				try {
 					$bdd   = Database::getInstance();
 					$query = $bdd->prepare('UPDATE `members` SET
-										`force2D` = :force2D,
+										`force2d` = :force2D,
 										`username` = :username,
 										`email` = :email,
 										`minecraft_username` = :mcu,
@@ -757,6 +763,7 @@
 				$query->execute();
 				$skin_list = $query->fetchAll(PDO::FETCH_COLUMN);
 				$query->closeCursor();
+
 				foreach ($skin_list as $skinID) {
 					@unlink(ROOT . 'assets/skins/' . $skinID . '.png');
 					@unlink(ROOT . 'assets/skins/2D/' . $skinID . '.png');

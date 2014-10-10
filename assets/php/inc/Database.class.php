@@ -17,7 +17,7 @@
 				$mysql_host     = '127.0.0.1';
 				$mysql_database = 'skinmanager';
 				$mysql_user     = 'root';
-				$mysql_password = '';
+				$mysql_password = 'root';
 
 				try {
 					$bdd = new PDO('mysql:host=' . $mysql_host . ';dbname=' . $mysql_database, $mysql_user, $mysql_password, $pdo_options);

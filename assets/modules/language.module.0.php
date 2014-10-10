@@ -1,5 +1,5 @@
 <?php
-	require_once(ROOT . 'assets' . DS . self::DIR_SCRIPTS . DS . 'inc/Database.class.php');
+	require_once(ROOT . 'assets/' . self::DIR_SCRIPTS . '/inc/Database.class.php');
 
 	class Language
 	{
@@ -70,8 +70,8 @@
 
 		private static function loadTranslations()
 		{
-			if (file_exists(ROOT . 'assets' . DS . 'php/language/' . self::$language . '.lang.php')) {
-				require_once(ROOT . 'assets' . DS . 'php/language/' . self::$language . '.lang.php');
+			if (file_exists(ROOT . 'assets/php/language/' . self::$language . '.lang.php')) {
+				require_once(ROOT . 'assets/php/language/' . self::$language . '.lang.php');
 				self::$_TRANSLATIONS = $_LANGUAGE;
 			} else
 				throw new Exception('Can\'t find requested language ' . self::$language);
