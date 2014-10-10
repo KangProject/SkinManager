@@ -33,5 +33,3 @@
 			return mcrypt_decrypt($this->cipher, $key, $data, $this->mode, $iv);
 		}
 	}
-
-?>

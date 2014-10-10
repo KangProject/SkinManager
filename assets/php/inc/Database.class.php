@@ -42,5 +42,3 @@
 			self::$instance = $instance;
 		}
 	}
-
-	?>

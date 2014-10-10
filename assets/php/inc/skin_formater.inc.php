@@ -104,5 +104,3 @@
 			imagepng($fullsize, $output);
 		}
 	}
-
-?>

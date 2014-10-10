@@ -16,4 +16,3 @@
 	}
 
 	echo 'Deleted ' . $i . ' fake skins';
-?>

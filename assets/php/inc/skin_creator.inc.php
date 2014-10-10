@@ -27,7 +27,7 @@
 			} else {
 				if (!is_array($image)) {
 					return ['error' => [Language::translate('ERROR_NO_URL')]];
-				} else if($image[3] != 'width="64" height="32"' && $image[3] != 'width="64" height="64"') {
+				} else if ($image[3] != 'width="64" height="32"' && $image[3] != 'width="64" height="64"') {
 					return ['error' => [Language::translate('ERROR_SKIN_DIM')]];
 				} else if ($image['mime'] != 'image/png') {
 					return ['error' => [$Language::translate('ERROR_SKIN_TYPE')]];
@@ -82,5 +82,3 @@
 			return ['error' => false];
 		}
 	}
-
-?>

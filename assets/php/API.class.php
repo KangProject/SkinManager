@@ -679,6 +679,7 @@
 										`minecraft_username` = :mcu,
 										`minecraft_password` = :mcp
 										WHERE `id` = :user_id');
+
 					$query->bindParam(':force2D', $force2D, \PDO::PARAM_BOOL);
 					$query->bindParam(':username', $username, \PDO::PARAM_STR);
 					$query->bindParam(':email', $email, \PDO::PARAM_STR);
@@ -856,5 +857,3 @@
 			}
 		}
 	}
-
-?>

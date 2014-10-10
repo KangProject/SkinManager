@@ -4,7 +4,7 @@
 
 	require_once('inc/skin_formater.inc.php');
 
-	$skinList = scandir('../skins/');
+	$skinList     = scandir('../skins/');
 	$skinFormater = new SkinFormatter();
 
 	foreach ($skinList as $skin) {
@@ -19,4 +19,3 @@
 		echo $skin[0] . ': 2D front created<br>';
 		$skinFormater->clearSkin();
 	}
-?>

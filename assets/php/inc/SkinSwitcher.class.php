@@ -120,8 +120,6 @@
 			}
 		}
 
-		// utils
-
 		private function doTheSwitch($token, $url, $model)
 		{
 			$ch = $this->getCh();
@@ -140,5 +138,3 @@
 			}
 		}
 	}
-
-?>

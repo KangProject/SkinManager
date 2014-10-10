@@ -24,4 +24,4 @@
 	<?php
 	} else {
 		self::redirect(WEBSITE_ROOT);
-	} ?>
+	}
