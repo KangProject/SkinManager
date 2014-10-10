@@ -43,9 +43,9 @@
 
 			newSkinForm.displayer = function (message) {
 				if (typeof(message) === 'array' || typeof(message) === 'object') {
-					notificater.notify(message.join('<br>'));
+					notifier.notify(message.join('<br>'));
 				} else {
-					notificater.notify(message);
+					notifier.notify(message);
 				}
 			};
 
@@ -56,7 +56,7 @@
 				$("form").trigger('reset');
 				$("#uploadFile").show();
 
-				notificater.hide();
+				notifier.hide();
 			};
 
 			newSkinForm.inputs.url.keyup = function (value) {
@@ -74,7 +74,7 @@
 				if (skinUrlField.val() !== "") {
 					url = skinUrlField.val();
 				} else {
-					notificater.notify(_LANGUAGE['ERROR_NO_URL']);
+					notifier.notify(_LANGUAGE['ERROR_NO_URL']);
 					return false;
 				}
 
@@ -107,7 +107,7 @@
 						},
 						onComplete: function (id, name, response) {
 							if (response.error === true) {
-								notificater.notify(response[0]);
+								notifier.notify(response[0]);
 							} else {
 								window.skinBar.addSkin({
 									id: response.id,
@@ -119,7 +119,7 @@
 								$("#uploadFile").show();
 
 								window.skinBar.showSkinList();
-								notificater.hide();
+								notifier.hide();
 							}
 						}
 					}

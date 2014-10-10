@@ -100,9 +100,9 @@
 									try {
 										var json = $.parseJSON(data);
 										if (json.error === true)
-											notificater.notify(json[0]);
+											notifier.notify(json[0]);
 										else
-											notificater.notify(_LANGUAGE['SAVE_COMPLETED']);
+											notifier.notify(_LANGUAGE['SAVE_COMPLETED']);
 									} catch (e) {
 										console.log(e, data);
 									}

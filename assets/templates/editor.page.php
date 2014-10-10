@@ -46,13 +46,13 @@
 					var editForm = new FormHandler(document.getElementById('editForm'));
 					editForm.displayer = function (message) {
 						if (typeof(message) === 'array' || typeof(message) === 'object')
-							notificater.notify(message.join('<br>'));
+							notifier.notify(message.join('<br>'));
 						else
-							notificater.notify(message);
+							notifier.notify(message);
 					};
 
 					editForm.onSuccess = function (data) {
-						notificater.notify(_LANGUAGE['SAVE_COMPLETED']);
+						notifier.notify(_LANGUAGE['SAVE_COMPLETED']);
 						window.skinBar.updateSkin({
 							id: <?=$_URL['skin']?>,
 							title: $("#skinName").val(),

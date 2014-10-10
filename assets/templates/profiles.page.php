@@ -26,7 +26,7 @@
 					type: 'POST',
 					data: {method: "loadUserList", match: $("#skinName").val()}
 				}).fail(function () {
-					notificater.notify(_LANGUAGE['ERROR_UNKNOW']);
+					notifier.notify(_LANGUAGE['ERROR_UNKNOW']);
 				}).success(function (data) {
 					var userList;
 					try {
