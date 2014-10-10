@@ -98,12 +98,14 @@
 			$reflection = $this->getRefl($method);
 
 			$pass = array();
+
 			foreach ($reflection->getParameters() as $param) {
 				if (isset($args[$param->getName()]))
 					$pass[] = $args[$param->getName()];
 				else
 					$pass[] = $param->getDefaultValue();
 			}
+
 			return $reflection->invokeArgs($this, $pass);
 		}
 
@@ -135,9 +137,11 @@
 			$match = addcslashes($match, '[]()*?^\\+|$');
 			$cmd   = "SELECT DISTINCT m.`username`, m.`id` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE m.`username` REGEXP :username ORDER BY m.`username` LIMIT :start, :max";
 			$query = $bdd->prepare($cmd);
+
 			$query->bindParam(':username', $match, \PDO::PARAM_STR);
 			$query->bindParam(':max', $max, \PDO::PARAM_INT);
 			$query->bindParam(':start', $start, \PDO::PARAM_INT);
+
 			$query->execute();
 			$data = $query->fetchAll(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
@@ -226,8 +230,8 @@
 		 * @param   String $match A skin name
 		 * @param   int $max The maximum amount of returned results
 		 * @param   int $start the total of result to skip before starting to collect the results
-		 * @return array a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
-		 * @return array a JSON Object containing the key 'error', an array of Strings on failure
+		 * @return  array a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
+		 * @return  array a JSON Object containing the key 'error', an array of Strings on failure
 		 */
 		public function searchSkinByName($match, $max = 15, $start = 0)
 		{
@@ -258,8 +262,9 @@
 		}
 
 		/**
-		 * Returns the details of the (@link $max) lasted uploaded skins
+		 * Returns the details of the (@link $max) lated uploaded skins
 		 *
+		 * @version 1.0
 		 * @deprecated use (@link getLatestSkins) instead
 		 */
 		public function getLastestSkins($max = 15, $start = 0)
@@ -268,15 +273,15 @@
 		}
 
 		/**
-		 * Returns the details of the (@link $max) lasted uploaded skins
+		 * Returns the details of the (@link $max) lated uploaded skins
 		 * (@link $max) must be ranged from 1 to 20
 		 *
 		 * @author  EphysPotato
-		 * @version 1.0
+		 * @version 1.1
 		 * @param   int $max The maximum amount of returned results
 		 * @param   int $start the total of result to skip before starting to collect the results
-		 * @return array a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
-		 * @return array a JSON Object containing the key 'error', an array of Strings on failure
+		 * @return  array a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
+		 * @return  array a JSON Object containing the key 'error', an array of Strings on failure
 		 */
 		public function getLatestSkins($max = 15, $start = 0)
 		{
@@ -303,8 +308,8 @@
 		 * @author  EphysPotato
 		 * @version 1.0
 		 * @param   int $max The maximum amount of returned results
-		 * @return array a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
-		 * @return array a JSON Object containing the key 'error', an array of Strings on failure
+		 * @return  array a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
+		 * @return  array a JSON Object containing the key 'error', an array of Strings on failure
 		 */
 		public function getRandomSkins($max = 15)
 		{
@@ -450,6 +455,7 @@
 			$uploader->chunksFolder      = ROOT . 'assets/misc/qqGarbage/';
 
 			$data = $uploader->getUploadedRessource();
+
 			if (is_array($data['error']))
 				return $data;
 
@@ -479,9 +485,11 @@
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('DELETE FROM `skins` WHERE `id` = :id AND `owner` = :owner');
 			$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
+
 			foreach ($skinList as $skinId) {
 				$query->bindParam(':id', $skinId, \PDO::PARAM_INT);
 				$query->execute();
+
 				if ($query->rowCount() === 1) {
 					@unlink(ROOT . 'assets/skins/' . $skinId . '.png');
 					@unlink(ROOT . 'assets/skins/2D/' . $skinId . '.png');
@@ -554,11 +562,13 @@
 			$id    = (int)$id;
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('UPDATE `skins` SET `title` = :name, `description` = :description, `model` = :model WHERE `id` = :id AND `owner` = :owner LIMIT 1');
+
 			$query->bindParam(':id', $id, \PDO::PARAM_INT);
 			$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
 			$query->bindParam(':name', $title, \PDO::PARAM_STR);
 			$query->bindParam(':description', $description, \PDO::PARAM_STR);
 			$query->bindParam(':model', $model, \PDO::PARAM_STR);
+
 			$query->execute();
 			$rows = $query->rowCount();
 			$query->closeCursor();
@@ -844,9 +854,11 @@
 
 				try {
 					$query = $db->prepare('INSERT INTO `members`(`username`, `password`, `email`) VALUES(:username, :password, :email)');
+
 					$query->bindParam(':username', $username, \PDO::PARAM_STR);
 					$query->bindParam(':password', $password, \PDO::PARAM_STR);
 					$query->bindParam(':email', $email, \PDO::PARAM_STR);
+
 					$query->execute();
 					$query->closeCursor();
 
