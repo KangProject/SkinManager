@@ -22,12 +22,13 @@
 
 				echo file_get_contents($url);
 			} else {
-				if (!is_array($image))
+				if (!is_array($image)) {
 					return ['error' => [Language::translate('ERROR_NO_URL')]];
-				elseif ($image[3] != 'width="64" height="32"' && $image[3] != 'width="64" height="64"')
+				} else if($image[3] != 'width="64" height="32"' && $image[3] != 'width="64" height="64"') {
 					return ['error' => [Language::translate('ERROR_SKIN_DIM')]];
-				elseif ($image['mime'] != 'image/png')
+				} else if ($image['mime'] != 'image/png') {
 					return ['error' => [$Language::translate('ERROR_SKIN_TYPE')]];
+				}
 
 				$skin_id = $this->upload();
 
@@ -37,8 +38,9 @@
 					$this->updateSkin($image, $skin_id);
 
 					return ['success' => true, 'error' => false, 'id' => $skin_id];
-				} else
+				} else {
 					return $skin_id;
+				}
 			}
 		}
 

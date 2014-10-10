@@ -68,7 +68,7 @@
 			else {
 				if (preg_match("#justLoggedIn#", $page) || preg_match("#301#", $page)) {
 					return true;
-				} elseif (preg_match("#migrated#", $page)) {
+				} else if (preg_match("#migrated#", $page)) {
 					return Language::translate('ERROR_MIGRATED');
 				} else {
 					return Language::translate('ERROR_PASSWORD');
