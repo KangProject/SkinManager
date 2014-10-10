@@ -33,7 +33,7 @@ section#footer p {
 footer {
   position: fixed;
   right: 0;
-  bottom: -30px;
+  bottom: -25px;
   overflow: hidden;
   -webkit-transition: bottom linear 0.2s;
   -moz-transition: bottom linear 0.2s;
