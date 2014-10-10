@@ -54,12 +54,12 @@
 			$paramStr = self::paramsEncode($params);
 
 			$ch = $this->getCh();
+
 			curl_setopt($ch, CURLOPT_HEADER, true);
 			curl_setopt($ch, CURLOPT_NOBODY, true);
 			curl_setopt($ch, CURLOPT_URL, self::$WEB_LOGIN_URL);
 			curl_setopt($ch, CURLOPT_POST, count($params));
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $paramStr);
-
 
 			$page = curl_exec($ch);
 
@@ -79,6 +79,7 @@
 		public static function paramsEncode($params)
 		{
 			$fields_string = '';
+
 			foreach ($params as $key => $value) {
 				$fields_string .= $key . '=' . $value . '&';
 			}
@@ -109,10 +110,11 @@
 			if (curl_errno($ch) !== 0)
 				return false;
 			else {
-				if (preg_match("#name=\"authenticityToken\" value=\"(.+)\">#", $page, $autenticityToken))
+				if (preg_match("#name=\"authenticityToken\" value=\"(.+)\">#", $page, $autenticityToken)) {
 					return $autenticityToken[1];
-				else
+				} else {
 					return false;
+				}
 			}
 		}
 
@@ -129,10 +131,11 @@
 
 			$page = curl_exec($ch);
 
-			if (curl_errno($ch) !== 0)
+			if (curl_errno($ch) !== 0) {
 				return false;
-			else
+			} else {
 				return preg_match("#success#", $page);
+			}
 		}
 	}
 

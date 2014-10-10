@@ -365,7 +365,7 @@
 			readfile($file);
 		}
 
-		public function addSkin($name, $description, $url = '', $username = '')
+		public function addSkin($name, $description, $url = '', $username = '', $model = 'steve')
 		{
 			$errors = [];
 			if (!self::isLogged())
@@ -382,13 +382,15 @@
 			$uploader              = new skin_creator();
 			$uploader->name        = $name;
 			$uploader->description = $description;
+			$uploader->model       = $model;
 
-			if ($url !== '')
+			if ($url !== '') {
 				return $uploader->upload_url($url);
-			elseif ($username !== '')
+			} elseif ($username !== '') {
 				return $uploader->upload_url("http://s3.amazonaws.com/MinecraftSkins/" . $username . ".png");
-			else
+			} else {
 				return ['error' => [Language::translate('ERROR_NO_URL')]];
+			}
 		}
 
 		private function isLogged()
@@ -404,7 +406,7 @@
 		//  Public methods requiring the user to be logged in
 		// =====================================================================================
 
-		public function uploadSkinFromURL($url, $name, $description)
+		public function uploadSkinFromURL($url, $name, $description, $model)
 		{
 			if (!self::isLogged())
 				return ['error' => ['user not logged in']];
@@ -414,10 +416,12 @@
 			$uploader              = new skin_creator();
 			$uploader->name        = $name;
 			$uploader->description = $description;
+			$uploader->model       = $model;
+
 			return $uploader->upload_url($url);
 		}
 
-		public function uploadSkin($name, $description)
+		public function uploadSkin($name, $description, $model)
 		{
 			if (!self::isLogged())
 				return ['error' => ['user not logged in']];
@@ -441,6 +445,7 @@
 			$uploader              = new skin_creator();
 			$uploader->name        = $name;
 			$uploader->description = $description;
+			$uploader->model       = $model;
 
 			return $uploader->upload_url($data['tmp_name']);
 		}
@@ -562,8 +567,10 @@
 			$id    = (int)$id;
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('SELECT `id` FROM `skins` WHERE `id` = :id AND `owner` = :owner LIMIT 1');
+
 			$query->bindParam(':id', $id, PDO::PARAM_INT);
 			$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
+
 			$query->execute();
 			$skin_exists = $query->fetch(PDO::FETCH_ASSOC);
 			$query->closeCursor();

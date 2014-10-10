@@ -118,7 +118,8 @@
 							uploader.setParams({
 								method: 'uploadSkin',
 								name: $("#skinName").val(),
-								description: $("#skinDesc").val()
+								description: $("#skinDesc").val(),
+								model: $('input[name=model]:checked').val()
 							})
 						},
 						onComplete: function (id, name, response) {

@@ -3,7 +3,7 @@
 
 	class skin_creator
 	{
-		public $name, $description;
+		public $name, $description, $model;
 
 		public function upload_url($url, $isTemp = false)
 		{
@@ -51,10 +51,13 @@
 				$this->description = '';
 
 			$bdd   = Database::getInstance();
-			$query = $bdd->prepare('INSERT INTO skins(`owner`, `title`, `description`) VALUES(:owner, :title, :description)');
+			$query = $bdd->prepare('INSERT INTO skins(`owner`, `title`, `description`, `model`) VALUES(:owner, :title, :description, :model)');
+
 			$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
 			$query->bindParam(':title', $this->name, PDO::PARAM_STR);
+			$query->bindParam(':model', $this->model, PDO::PARAM_STR);
 			$query->bindParam(':description', $this->description, PDO::PARAM_STR);
+
 			$query->execute();
 			$query->closeCursor();
 
