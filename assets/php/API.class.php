@@ -1,5 +1,7 @@
 <?php
 
+	namespace EphysCMS;
+
 	/**
 	 * Dev note:
 	 *
@@ -49,6 +51,7 @@
 		private function methodIs($type, $method)
 		{
 			$refl = $this->getRefl($method);
+
 			switch ($type) {
 				case "static":
 					return $refl->isStatic();
@@ -68,7 +71,7 @@
 		private function getRefl($method)
 		{
 			if ($this->refl === null)
-				$this->refl = new ReflectionMethod($this, $method);
+				$this->refl = new \ReflectionMethod($this, $method);
 
 			return $this->refl;
 		}
@@ -132,11 +135,11 @@
 			$match = addcslashes($match, '[]()*?^\\+|$');
 			$cmd   = "SELECT DISTINCT m.`username`, m.`id` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE m.`username` REGEXP :username ORDER BY m.`username` LIMIT :start, :max";
 			$query = $bdd->prepare($cmd);
-			$query->bindParam(':username', $match, PDO::PARAM_STR);
-			$query->bindParam(':max', $max, PDO::PARAM_INT);
-			$query->bindParam(':start', $start, PDO::PARAM_INT);
+			$query->bindParam(':username', $match, \PDO::PARAM_STR);
+			$query->bindParam(':max', $max, \PDO::PARAM_INT);
+			$query->bindParam(':start', $start, \PDO::PARAM_INT);
 			$query->execute();
-			$data = $query->fetchAll(PDO::FETCH_ASSOC);
+			$data = $query->fetchAll(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
 
 			return $data;
@@ -165,15 +168,15 @@
 				$start = (int)$start;
 
 				$query = $bdd->prepare('SELECT s.`id`, s.`title`, s.`description`, s.`model`, m.`username` AS `owner_username` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`owner` = :owner LIMIT :start, :max');
-				$query->bindParam(':max', $max, PDO::PARAM_INT);
-				$query->bindParam(':start', $start, PDO::PARAM_INT);
+				$query->bindParam(':max', $max, \PDO::PARAM_INT);
+				$query->bindParam(':start', $start, \PDO::PARAM_INT);
 			} else {
 				$query = $bdd->prepare('SELECT s.`id`, s.`title`, s.`description`, s.`model`, m.`username` AS `owner_username` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`owner` = :owner');
 			}
 
-			$query->bindParam(':owner', $user, PDO::PARAM_INT);
+			$query->bindParam(':owner', $user, \PDO::PARAM_INT);
 			$query->execute();
-			$data = $query->fetchAll(PDO::FETCH_ASSOC);
+			$data = $query->fetchAll(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
 
 			return $data;
@@ -201,9 +204,9 @@
 			$bdd = Database::getInstance();
 
 			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`model` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`id` = :id LIMIT 1');
-			$query->bindParam(':id', $id, PDO::PARAM_INT);
+			$query->bindParam(':id', $id, \PDO::PARAM_INT);
 			$query->execute();
-			$data = $query->fetch(PDO::FETCH_ASSOC);
+			$data = $query->fetch(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
 
 			if ($data === false)
@@ -241,11 +244,11 @@
 			$match = addcslashes($match, '[]()*?^\\+|$');
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id`, s.`model` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`title` REGEXP :title ORDER BY s.`title` LIMIT :start, :max');
-			$query->bindParam(':title', $match, PDO::PARAM_STR);
-			$query->bindParam(':max', $max, PDO::PARAM_INT);
-			$query->bindParam(':start', $start, PDO::PARAM_INT);
+			$query->bindParam(':title', $match, \PDO::PARAM_STR);
+			$query->bindParam(':max', $max, \PDO::PARAM_INT);
+			$query->bindParam(':start', $start, \PDO::PARAM_INT);
 			$query->execute();
-			$data = $query->fetchAll(PDO::FETCH_ASSOC);
+			$data = $query->fetchAll(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
 
 			return $data;
@@ -271,10 +274,10 @@
 			$start = (int)$start;
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id`, s.`model` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` ORDER BY s.`id` DESC LIMIT :start, :max');
-			$query->bindParam(':max', $max, PDO::PARAM_INT);
-			$query->bindParam(':start', $start, PDO::PARAM_INT);
+			$query->bindParam(':max', $max, \PDO::PARAM_INT);
+			$query->bindParam(':start', $start, \PDO::PARAM_INT);
 			$query->execute();
-			$data = $query->fetchAll(PDO::FETCH_ASSOC);
+			$data = $query->fetchAll(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
 
 			return $data;
@@ -300,9 +303,9 @@
 
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id`, s.`model` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` ORDER BY Rand() DESC LIMIT :max');
-			$query->bindParam(':max', $max, PDO::PARAM_INT);
+			$query->bindParam(':max', $max, \PDO::PARAM_INT);
 			$query->execute();
-			$data = $query->fetchAll(PDO::FETCH_ASSOC);
+			$data = $query->fetchAll(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
 
 			return $data;
@@ -344,7 +347,7 @@
 			$bdd = Database::getInstance();
 
 			$query = $bdd->prepare('SELECT `title` FROM `skins` WHERE `id` = :id LIMIT 1');
-			$query->bindParam(':id', $id, PDO::PARAM_INT);
+			$query->bindParam(':id', $id, \PDO::PARAM_INT);
 			$query->execute();
 			$skin = $query->fetch();
 			$query->closeCursor();
@@ -427,7 +430,7 @@
 			require_once dirname(__FILE__) . '/inc/skin_creator.inc.php';
 			require_once dirname(__FILE__) . '/inc/qqFileUploader.class.php';
 
-			$uploader                    = new qqFileUploader();
+			$uploader                    = new \qqFileUploader();
 			$uploader->allowedExtensions = array('png');
 			$uploader->sizeLimit         = 102400;
 			$uploader->inputName         = 'qqfile';
@@ -462,9 +465,9 @@
 
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('DELETE FROM `skins` WHERE `id` = :id AND `owner` = :owner');
-			$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
+			$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
 			foreach ($skinList as $skinId) {
-				$query->bindParam(':id', $skinId, PDO::PARAM_INT);
+				$query->bindParam(':id', $skinId, \PDO::PARAM_INT);
 				$query->execute();
 				if ($query->rowCount() === 1) {
 					@unlink(ROOT . 'assets/skins/' . $skinId . '.png');
@@ -493,9 +496,9 @@
 			$sourceSkin_id = (int)$sourceSkin_id;
 			$bdd           = Database::getInstance();
 			$query         = $bdd->prepare('SELECT `title`, `description`, `model` FROM `skins` WHERE `id` = :id LIMIT 1');
-			$query->bindParam(':id', $sourceSkin_id, PDO::PARAM_INT);
+			$query->bindParam(':id', $sourceSkin_id, \PDO::PARAM_INT);
 			$query->execute();
-			$sourceSkin_data = $query->fetch(PDO::FETCH_ASSOC);
+			$sourceSkin_data = $query->fetch(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
 
 			if ($sourceSkin_data === false)
@@ -503,10 +506,10 @@
 
 			$query = $bdd->prepare('INSERT INTO `skins`(`owner`, `title`, `description`, `model`) VALUES(:owner, :title, :description, :model)');
 
-			$query->bindValue(':title', $sourceSkin_data['title'], PDO::PARAM_STR);
-			$query->bindValue(':description', $sourceSkin_data['description'], PDO::PARAM_STR);
-			$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
-			$query->bindValue(':model', $sourceSkin_data['model'], PDO::PARAM_STR);
+			$query->bindValue(':title', $sourceSkin_data['title'], \PDO::PARAM_STR);
+			$query->bindValue(':description', $sourceSkin_data['description'], \PDO::PARAM_STR);
+			$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
+			$query->bindValue(':model', $sourceSkin_data['model'], \PDO::PARAM_STR);
 
 			$query->execute();
 			$newSkin_id = $bdd->lastInsertId();
@@ -538,11 +541,11 @@
 			$id    = (int)$id;
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('UPDATE `skins` SET `title` = :name, `description` = :description, `model` = :model WHERE `id` = :id AND `owner` = :owner LIMIT 1');
-			$query->bindParam(':id', $id, PDO::PARAM_INT);
-			$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
-			$query->bindParam(':name', $title, PDO::PARAM_STR);
-			$query->bindParam(':description', $description, PDO::PARAM_STR);
-			$query->bindParam(':model', $model, PDO::PARAM_STR);
+			$query->bindParam(':id', $id, \PDO::PARAM_INT);
+			$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
+			$query->bindParam(':name', $title, \PDO::PARAM_STR);
+			$query->bindParam(':description', $description, \PDO::PARAM_STR);
+			$query->bindParam(':model', $model, \PDO::PARAM_STR);
 			$query->execute();
 			$rows = $query->rowCount();
 			$query->closeCursor();
@@ -566,11 +569,11 @@
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('SELECT `id` FROM `skins` WHERE `id` = :id AND `owner` = :owner LIMIT 1');
 
-			$query->bindParam(':id', $id, PDO::PARAM_INT);
-			$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
+			$query->bindParam(':id', $id, \PDO::PARAM_INT);
+			$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
 
 			$query->execute();
-			$skin_exists = $query->fetch(PDO::FETCH_ASSOC);
+			$skin_exists = $query->fetch(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
 
 			if ($skin_exists === false)
@@ -596,9 +599,9 @@
 			try {
 				$db    = Database::getInstance();
 				$query = $db->prepare('SELECT `minecraft_username`, `minecraft_password` FROM `members` WHERE `id` = :user_id');
-				$query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+				$query->bindParam(':user_id', $_SESSION['user_id'], \PDO::PARAM_INT);
 				$query->execute();
-				$data = $query->fetch(PDO::FETCH_ASSOC);
+				$data = $query->fetch(\PDO::FETCH_ASSOC);
 				$query->closeCursor();
 
 				if ($data === false)
@@ -620,7 +623,7 @@
 					return ['error' => [$result]];
 
 				return ['error' => false];
-			} catch (Exception $e) {
+			} catch (\Exception $e) {
 				return ['error' => ['Internal server error']];
 			}
 		}
@@ -676,12 +679,12 @@
 										`minecraft_username` = :mcu,
 										`minecraft_password` = :mcp
 										WHERE `id` = :user_id');
-					$query->bindParam(':force2D', $force2D, PDO::PARAM_BOOL);
-					$query->bindParam(':username', $username, PDO::PARAM_STR);
-					$query->bindParam(':email', $email, PDO::PARAM_STR);
-					$query->bindParam(':mcu', $minecraft_username, PDO::PARAM_STR);
-					$query->bindParam(':mcp', $minecraft_password, PDO::PARAM_STR);
-					$query->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+					$query->bindParam(':force2D', $force2D, \PDO::PARAM_BOOL);
+					$query->bindParam(':username', $username, \PDO::PARAM_STR);
+					$query->bindParam(':email', $email, \PDO::PARAM_STR);
+					$query->bindParam(':mcu', $minecraft_username, \PDO::PARAM_STR);
+					$query->bindParam(':mcp', $minecraft_password, \PDO::PARAM_STR);
+					$query->bindParam(':user_id', $_SESSION['user_id'], \PDO::PARAM_INT);
 					$query->execute();
 
 					$_SESSION['username']           = $username;
@@ -691,7 +694,7 @@
 					$_SESSION['minecraft_password'] = $minecraft_password;
 
 					return ['error' => false];
-				} catch (Exception $e) {
+				} catch (\Exception $e) {
 					return ['error' => ['Internal server error']];
 				}
 			} else {
@@ -716,7 +719,7 @@
 				$cmd .= '`username` = :login';
 
 			$query = $db->prepare($cmd);
-			$query->bindParam(':login', $login, PDO::PARAM_STR);
+			$query->bindParam(':login', $login, \PDO::PARAM_STR);
 			$query->execute();
 			$rc = $query->rowCount();
 			$query->closeCursor();
@@ -738,7 +741,7 @@
 			$bdd = Database::getInstance();
 
 			$query = $bdd->prepare('SELECT `username`, `password`, `id`, `email`, `language`, `force2D`, `minecraft_username`, `minecraft_password` FROM `members` WHERE `username` = :username LIMIT 1');
-			$query->bindParam(':username', $username, PDO::PARAM_STR);
+			$query->bindParam(':username', $username, \PDO::PARAM_STR);
 			$query->execute();
 			$data = $query->fetch();
 			$query->closeCursor();
@@ -769,9 +772,9 @@
 			try {
 				$db    = Database::getInstance();
 				$query = $db->prepare("SELECT s.`id` FROM `skins` s WHERE s.`owner` = :owner");
-				$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
+				$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
 				$query->execute();
-				$skin_list = $query->fetchAll(PDO::FETCH_COLUMN);
+				$skin_list = $query->fetchAll(\PDO::FETCH_COLUMN);
 				$query->closeCursor();
 
 				foreach ($skin_list as $skinID) {
@@ -781,18 +784,18 @@
 				}
 
 				$query = $db->prepare('DELETE FROM `skins` WHERE `owner` = :owner');
-				$query->bindValue(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
+				$query->bindValue(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
 				$query->execute();
 				$query->closeCursor();
 				$query = $db->prepare('DELETE FROM `members` WHERE `id` = :id');
-				$query->bindValue(':id', $_SESSION['user_id'], PDO::PARAM_INT);
+				$query->bindValue(':id', $_SESSION['user_id'], \PDO::PARAM_INT);
 				$query->execute();
 				$query->closeCursor();
 
 				session_destroy();
 
 				return ['error' => false];
-			} catch (Exception $e) {
+			} catch (\Exception $e) {
 				return ['error' => ['Internal server error']];
 			}
 		}
@@ -827,9 +830,9 @@
 				$db       = Database::getInstance();
 				try {
 					$query = $db->prepare('INSERT INTO `members`(`username`, `password`, `email`) VALUES(:username, :password, :email)');
-					$query->bindParam(':username', $username, PDO::PARAM_STR);
-					$query->bindParam(':password', $password, PDO::PARAM_STR);
-					$query->bindParam(':email', $email, PDO::PARAM_STR);
+					$query->bindParam(':username', $username, \PDO::PARAM_STR);
+					$query->bindParam(':password', $password, \PDO::PARAM_STR);
+					$query->bindParam(':email', $email, \PDO::PARAM_STR);
 					$query->execute();
 					$query->closeCursor();
 
@@ -845,7 +848,7 @@
 					$_SESSION['minecraft_password'] = '';
 
 					return ['error' => false];
-				} catch (PDOException $e) {
+				} catch (\PDOException $e) {
 					return ['error' => ['Internal server error']];
 				}
 			} else {

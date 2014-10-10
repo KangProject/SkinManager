@@ -1,5 +1,7 @@
 <?php
 
+	namespace EphysCMS;
+
 	class Crypto
 	{
 		public $key = '';

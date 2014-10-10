@@ -1,6 +1,8 @@
 <?php
 
-	class SFormater
+	namespace EphysCMS;
+
+	class SkinFormatter
 	{
 		private $skindata = null;
 
@@ -8,7 +10,7 @@
 		{
 			if ($url !== null) {
 				if (!$this->setSkinFromURL($url))
-					throw new Exception('Skin not found');
+					throw new \Exception('Skin not found');
 			}
 		}
 

@@ -1,12 +1,15 @@
 <?php
+
+	namespace EphysCMS;
+
 	if (self::isLogged()) {
 		if (isset($_URL['skin']) && is_numeric($_URL['skin'])) {
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('SELECT * FROM `skins` WHERE `owner` = :owner AND `id` = :id');
-			$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
-			$query->bindParam(':id', $_URL['skin'], PDO::PARAM_INT);
+			$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
+			$query->bindParam(':id', $_URL['skin'], \PDO::PARAM_INT);
 			$query->execute();
-			$skin = $query->fetch(PDO::FETCH_ASSOC);
+			$skin = $query->fetch(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
 
 			if ($skin === false) {

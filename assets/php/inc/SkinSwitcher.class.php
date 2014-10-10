@@ -1,5 +1,7 @@
 <?php
 
+	namespace EphysCMS;
+
 	class SkinSwitcher
 	{
 		private static $WEB_LOGIN_URL = "https://minecraft.net/login";

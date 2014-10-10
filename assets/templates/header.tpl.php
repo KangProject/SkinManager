@@ -1,3 +1,4 @@
+<?php namespace EphysCMS; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

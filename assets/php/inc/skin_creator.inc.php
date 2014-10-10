@@ -1,4 +1,7 @@
 <?php
+
+	namespace EphysCMS;
+
 	require_once('skin_formater.inc.php');
 
 	class SkinCreator
@@ -55,10 +58,10 @@
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('INSERT INTO skins(`owner`, `title`, `description`, `model`) VALUES(:owner, :title, :description, :model)');
 
-			$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
-			$query->bindParam(':title', $this->name, PDO::PARAM_STR);
-			$query->bindParam(':model', $this->model, PDO::PARAM_STR);
-			$query->bindParam(':description', $this->description, PDO::PARAM_STR);
+			$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
+			$query->bindParam(':title', $this->name, \PDO::PARAM_STR);
+			$query->bindParam(':model', $this->model, \PDO::PARAM_STR);
+			$query->bindParam(':description', $this->description, \PDO::PARAM_STR);
 
 			$query->execute();
 			$query->closeCursor();
@@ -70,7 +73,7 @@
 		{
 			file_put_contents(dirname(__FILE__) . '/../../skins/' . $skin_id . '.png', $skin);
 
-			$skinFormater = new SFormater();
+			$skinFormater = new SkinFormatter();
 			$skinFormater->setSkinData(imagecreatefromstring($skin));
 			$skinFormater->createSkinBack(dirname(__FILE__) . '/../../skins/2D/' . $skin_id . '.png.back', 0.5);
 			$skinFormater->createSkinFront(dirname(__FILE__) . '/../../skins/2D/' . $skin_id . '.png', 0.5);

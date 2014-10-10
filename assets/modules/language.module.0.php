@@ -1,4 +1,7 @@
 <?php
+
+	namespace EphysCMS;
+
 	require_once(ROOT . 'assets/' . self::DIR_SCRIPTS . '/inc/Database.class.php');
 
 	class Language
@@ -52,10 +55,11 @@
 			global $_URL;
 
 			if (isset($_SESSION['user_id']) && isset($_URL['l']) && ($_URL['l'] != $_SESSION['language'])) {
-				$bdd   = Database::getInstance();
+				$bdd = Database::getInstance();
+
 				$query = $bdd->prepare('UPDATE `members` SET `language` = :language WHERE `id` = :id');
-				$query->bindParam(':language', $_URL['l'], PDO::PARAM_STR);
-				$query->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
+				$query->bindParam(':language', $_URL['l'], \PDO::PARAM_STR);
+				$query->bindParam(':id', $_SESSION['user_id'], \PDO::PARAM_INT);
 				$query->execute();
 				$query->closeCursor();
 			}
@@ -77,7 +81,7 @@
 		/**
 		 * Load a language translations file and store it.
 		 *
-		 * @throws Exception
+		 * @throws \Exception
 		 */
 		private static function loadTranslations()
 		{
@@ -85,7 +89,7 @@
 				require_once(ROOT . 'assets/php/language/' . self::$language . '.lang.php');
 				self::$_TRANSLATIONS = $_LANGUAGE;
 			} else {
-				throw new Exception('Can\'t find requested language ' . self::$language);
+				throw new \Exception('Can\'t find requested language ' . self::$language);
 			}
 		}
 
@@ -94,7 +98,7 @@
 		 *
 		 * @param $key
 		 * @param null $params
-		 * @throws Exception
+		 * @throws \Exception
 		 * @return string
 		 */
 		public static function translate($key, $params = null)
@@ -108,9 +112,9 @@
 					return self::$_TRANSLATIONS[$key];
 				}
 			} else {
-				throw new Exception('Can\'t find requested translation ' . $key . ' in ' . self::$language);
+				throw new \Exception('Can\'t find requested translation ' . $key . ' in ' . self::$language);
 			}
 		}
 	}
 
-?>
+	?>

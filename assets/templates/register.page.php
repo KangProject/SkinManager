@@ -1,4 +1,7 @@
 <?php
+
+	namespace EphysCMS;
+
 	if (self::isLogged())
 		self::redirect(WEBSITE_ROOT);
 ?>

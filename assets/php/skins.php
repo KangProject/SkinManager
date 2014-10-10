@@ -1,9 +1,11 @@
 <?php
+
+	namespace EphysCMS;
+
 	require_once('inc/skin_formater.inc.php');
 
 	$skinList = scandir('../skins/');
-
-	$skinFormater = new SFormater();
+	$skinFormater = new SkinFormatter();
 
 	foreach ($skinList as $skin) {
 		$skin = explode('.', $skin);

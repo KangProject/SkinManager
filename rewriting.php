@@ -1,16 +1,16 @@
 <?php
+
 	namespace EphysCMS;
 
 	class Router
 	{
-		const CMS_VERSION = 3.1;
-		const SITE_LOCATION = null;
-		const DEFAULT_PAGE = 'home';
 		const DEV_MODE = true;
+		const WEBSITE_SUBDIRECTORY = "SkinManager";
 
 		const WEBSITE_ROOT_DEV = "http://localhost/SkinManager/";
 		const WEBSITE_ROOT_PROD = "http://skin.outadoc.fr/";
 
+		const DEFAULT_PAGE = 'home';
 		const DIR_MODULES = 'modules';
 		const DIR_TEMPLATES = 'templates';
 		const DIR_SCRIPTS = 'php';
@@ -73,7 +73,7 @@
 					$input = stripslashes($input);
 				}
 
-				$api    = new \API();
+				$api    = new API();
 				$result = $api->selectMethod($_REQUEST);
 
 				if (isset($result['error_code']))
@@ -103,7 +103,7 @@
 
 		private function parseURI($uri)
 		{
-			$url = (self::SITE_LOCATION == null) ? $uri : strstr($uri, stripslashes(self::SITE_LOCATION));
+			$url = (self::WEBSITE_SUBDIRECTORY == null) ? $uri : strstr($uri, stripslashes(self::WEBSITE_SUBDIRECTORY));
 			return explode('/', strstr($uri, $url));
 		}
 
@@ -247,4 +247,4 @@
 		}
 	}
 
-	new Router(str_replace('/SkinManager', '', $_SERVER['REDIRECT_URL']));
+	new Router($_SERVER['REDIRECT_URL']);

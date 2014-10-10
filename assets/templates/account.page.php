@@ -1,4 +1,8 @@
-<?php if (self::isLogged()) { ?>
+<?php
+
+	namespace EphysCMS;
+
+	if (self::isLogged()) { ?>
 	<section>
 		<h2><?= Language::translate('ACCOUNT') ?></h2>
 
