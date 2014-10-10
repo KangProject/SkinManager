@@ -109,7 +109,7 @@
 			if (curl_errno($ch) !== 0)
 				return false;
 			else {
-				if (preg_match("#name=\"authenticityToken\" value=\"(.+)\"\>#", $page, $autenticityToken))
+				if (preg_match("#name=\"authenticityToken\" value=\"(.+)\">#", $page, $autenticityToken))
 					return $autenticityToken[1];
 				else
 					return false;
