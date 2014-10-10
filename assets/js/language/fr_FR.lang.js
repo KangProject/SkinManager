@@ -1,5 +1,5 @@
 _LANGUAGE = [];
-_LANGUAGE['SKIN_SWITCH'] = 'Utiliser le skin';
+_LANGUAGE['SKIN_SWITCH'] = 'Utiliser ce skin !';
 _LANGUAGE['SKIN_DOWNLOAD'] = 'Télécharger';
 _LANGUAGE['DUPLICATE'] = 'Dupliquer';
 _LANGUAGE['SKIN_DELETE'] = 'Effacer';
@@ -9,7 +9,7 @@ _LANGUAGE['SKIN_DELETECONFIRM'] = 'Voulez-vous vraiment effacer ce skin?';
 _LANGUAGE['SKIN_ADDED'] = 'Skin ajouté !';
 _LANGUAGE['ERROR_UNKNOW'] = 'Une erreur inconnue est survenue';
 _LANGUAGE['SAVE_COMPLETED'] = 'Modifications enregistrées';
-_LANGUAGE['ERROR_NO_URL'] = 'Impossible de charger le skin: Mauvais pseudo ou URL';
+_LANGUAGE['ERROR_NO_URL'] = 'Impossible de charger le skin: mauvais pseudo ou URL';
 _LANGUAGE['CANCEL'] = 'Annuler';
 _LANGUAGE['SELECT'] = 'Sélectionner';
 _LANGUAGE['MINECRAFT_PASSWORD_KEY'] = 'Clé de chiffrement du mot de passe Minecraft';
