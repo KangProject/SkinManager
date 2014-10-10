@@ -21,10 +21,22 @@
 						<input id="skinName" name="title" type="text"
 						       placeholder="<?= Language::translate('SKIN_NAME') ?>" value="<?= $skin['title'] ?>">
 						<!-- <button class="btn-white" id="btn_editSkin"><?= Language::translate('SKIN_EDIT_GRAPHICAL') ?></button> -->
+
 						<label for="skinDesc"><?= Language::translate('SKIN_DESCRIPTION') ?></label>
 						<input id="skinDesc" name="description" type="text"
 						       placeholder="<?= Language::translate('SKIN_DESCRIPTION') ?>"
 						       value="<?= $skin['description'] ?>">
+
+						<label for="skinModel"><?= Language::translate('SKIN_MODEL') ?></label>
+						<div class="input-group">
+							<input id="skinModelSteve" name="model" type="radio" value="steve" <?= $skin['model'] == 'steve' ? 'checked' : '' ?>>
+							<label for="skinModelSteve">Steve (normal)</label>
+						</div>
+						<div class="input-group">
+							<input id="skinModelAlex" name="model" type="radio" value="alex" <?= $skin['model'] == 'alex' ? 'checked' : '' ?>>
+							<label for="skinModelAlex">Alex (slim arms)</label>
+						</div>
+
 						<input type="hidden" name="method" value="editSkin">
 						<input type="hidden" name="id" value="<?= $_URL['skin'] ?>">
 						<input type="submit" value="<?= Language::translate('SKIN_EDIT') ?>">

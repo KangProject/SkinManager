@@ -57,6 +57,7 @@
 	$_LANGUAGE['SKIN_INVALID']           = 'The skin is invalid';
 	$_LANGUAGE['SKIN_NAME']              = 'Skin Name';
 	$_LANGUAGE['SKIN_DESCRIPTION']       = 'Skin Description';
+	$_LANGUAGE['SKIN_MODEL']             = 'Skin Model';
 	$_LANGUAGE['SKIN_LOAD']              = 'Skin Source:';
 	$_LANGUAGE['SKIN_LOAD_URL']          = 'Skin URL';
 	$_LANGUAGE['SKIN_LOAD_USERNAME']     = 'Username';

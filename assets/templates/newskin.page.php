@@ -11,6 +11,16 @@
 			<input id="skinDesc" name="description" type="text"
 			       placeholder="<?= Language::translate('SKIN_DESCRIPTION') ?>"/>
 
+			<label for="skinModel"><?= Language::translate('SKIN_MODEL') ?></label>
+			<div class="input-group">
+				<input id="skinModelSteve" name="model" type="radio" value="steve" checked>
+				<label for="skinModelSteve">Steve (normal)</label>
+			</div>
+			<div class="input-group">
+				<input id="skinModelAlex" name="model" type="radio" value="alex">
+				<label for="skinModelAlex">Alex (slim arms)</label>
+			</div>
+
 			<h3><?= Language::translate('SKIN_LOAD') ?></h3>
 			<label for="skinURL"><?= Language::translate('SKIN_LOAD_URL') ?></label>
 			<input id="skinURL" name="url" type="text" placeholder="<?= Language::translate('SKIN_LOAD_URL') ?>">
@@ -18,9 +28,10 @@
 				(<?= Language::translate('CASE_SENSITIVE') ?>)</label>
 			<input id="skinUsername" name="username" type="text"
 			       placeholder="<?= Language::translate('SKIN_LOAD_USERNAME') ?>">
-			<label class="control-label" for="skinFile"><?= Language::translate('SKIN_LOAD_UPLOAD') ?></label>
 
+			<label class="control-label" for="skinFile"><?= Language::translate('SKIN_LOAD_UPLOAD') ?></label>
 			<div id="skinFile"></div>
+
 			<div class="fieldgroup-center">
 				<button class="btn-blue" id="btn_submitSkin"
 				        type="submit"><?= Language::translate('SKIN_ADD') ?></button>

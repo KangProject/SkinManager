@@ -20,7 +20,7 @@ h2 {
 }
 h3 {
   margin: 0;
-  padding: 5px 15px;
+  padding: 10px 15px;
 }
 h4 {
   margin: 0;
@@ -246,6 +246,14 @@ form label {
   font-size: 15px;
   text-align: left;
 }
+form input[type="radio"] + label {
+  display: inline;
+}
+form input[type="radio"] {
+  width: 20px;
+  min-width: 20px;
+}
+form .input-group,
 form input,
 form select {
   width: 300px;

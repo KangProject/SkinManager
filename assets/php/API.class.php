@@ -164,11 +164,11 @@
 			if ($max > 0) {
 				$start = (int)$start;
 
-				$query = $bdd->prepare('SELECT s.`id`, s.`title`, s.`description`, m.`username` AS `owner_username` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`owner` = :owner LIMIT :start, :max');
+				$query = $bdd->prepare('SELECT s.`id`, s.`title`, s.`description`, s.`model`, m.`username` AS `owner_username` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`owner` = :owner LIMIT :start, :max');
 				$query->bindParam(':max', $max, PDO::PARAM_INT);
 				$query->bindParam(':start', $start, PDO::PARAM_INT);
 			} else {
-				$query = $bdd->prepare('SELECT s.`id`, s.`title`, s.`description`, m.`username` AS `owner_username` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`owner` = :owner');
+				$query = $bdd->prepare('SELECT s.`id`, s.`title`, s.`description`, s.`model`, m.`username` AS `owner_username` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`owner` = :owner');
 			}
 
 			$query->bindParam(':owner', $user, PDO::PARAM_INT);
@@ -200,7 +200,7 @@
 			$id  = (int)$id;
 			$bdd = Database::getInstance();
 
-			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`id` = :id LIMIT 1');
+			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`model` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`id` = :id LIMIT 1');
 			$query->bindParam(':id', $id, PDO::PARAM_INT);
 			$query->execute();
 			$data = $query->fetch(PDO::FETCH_ASSOC);
@@ -240,7 +240,7 @@
 			$start = (int)$start;
 			$match = addcslashes($match, '[]()*?^\\+|$');
 			$bdd   = Database::getInstance();
-			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`title` REGEXP :title ORDER BY s.`title` LIMIT :start, :max');
+			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id`, s.`model` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`title` REGEXP :title ORDER BY s.`title` LIMIT :start, :max');
 			$query->bindParam(':title', $match, PDO::PARAM_STR);
 			$query->bindParam(':max', $max, PDO::PARAM_INT);
 			$query->bindParam(':start', $start, PDO::PARAM_INT);
@@ -270,7 +270,7 @@
 
 			$start = (int)$start;
 			$bdd   = Database::getInstance();
-			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` ORDER BY s.`id` DESC LIMIT :start, :max');
+			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id`, s.`model` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` ORDER BY s.`id` DESC LIMIT :start, :max');
 			$query->bindParam(':max', $max, PDO::PARAM_INT);
 			$query->bindParam(':start', $start, PDO::PARAM_INT);
 			$query->execute();
@@ -299,7 +299,7 @@
 				return ['error' => ['$max muse be ranged from 1 to 20']];
 
 			$bdd   = Database::getInstance();
-			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` ORDER BY Rand() DESC LIMIT :max');
+			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id`, s.`model` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` ORDER BY Rand() DESC LIMIT :max');
 			$query->bindParam(':max', $max, PDO::PARAM_INT);
 			$query->execute();
 			$data = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -489,7 +489,7 @@
 
 			$sourceSkin_id = (int)$sourceSkin_id;
 			$bdd           = Database::getInstance();
-			$query         = $bdd->prepare('SELECT `title`, `description` FROM `skins` WHERE `id` = :id LIMIT 1');
+			$query         = $bdd->prepare('SELECT `title`, `description`, `model` FROM `skins` WHERE `id` = :id LIMIT 1');
 			$query->bindParam(':id', $sourceSkin_id, PDO::PARAM_INT);
 			$query->execute();
 			$sourceSkin_data = $query->fetch(PDO::FETCH_ASSOC);
@@ -498,10 +498,13 @@
 			if ($sourceSkin_data === false)
 				return ['error' => ['cannot find requested skin']];
 
-			$query = $bdd->prepare('INSERT INTO `skins`(`owner`, `title`, `description`) VALUES(:owner, :title, :description)');
+			$query = $bdd->prepare('INSERT INTO `skins`(`owner`, `title`, `description`, `model`) VALUES(:owner, :title, :description, :model)');
+
 			$query->bindValue(':title', $sourceSkin_data['title'], PDO::PARAM_STR);
 			$query->bindValue(':description', $sourceSkin_data['description'], PDO::PARAM_STR);
 			$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
+			$query->bindValue(':model', $sourceSkin_data['model'], PDO::PARAM_STR);
+
 			$query->execute();
 			$newSkin_id = $bdd->lastInsertId();
 			$query->closeCursor();
@@ -510,10 +513,11 @@
 			@copy(ROOT . 'assets/skins/2D/' . $sourceSkin_id . '.png', ROOT . 'assets/skins/2D/' . $newSkin_id . '.png');
 			@copy(ROOT . 'assets/skins/2D/' . $sourceSkin_id . '.png.back', ROOT . 'assets/skins/2D/' . $newSkin_id . '.png.back');
 
-			return ['error' => false, 'id' => $newSkin_id, 'title' => $sourceSkin_data['title'], 'description' => $sourceSkin_data['description']];
+			return ['error'       => false, 'id' => $newSkin_id, 'title' => $sourceSkin_data['title'],
+			        'description' => $sourceSkin_data['description'], 'model' => $sourceSkin_data['model']];
 		}
 
-		public function editSkin($id, $title, $description)
+		public function editSkin($id, $title, $description, $model)
 		{
 			$errors = [];
 			if (!self::isLogged())
@@ -530,11 +534,12 @@
 
 			$id    = (int)$id;
 			$bdd   = Database::getInstance();
-			$query = $bdd->prepare('UPDATE `skins` SET `title` = :name, `description` = :description WHERE `id` = :id AND `owner` = :owner LIMIT 1');
+			$query = $bdd->prepare('UPDATE `skins` SET `title` = :name, `description` = :description, `model` = :model WHERE `id` = :id AND `owner` = :owner LIMIT 1');
 			$query->bindParam(':id', $id, PDO::PARAM_INT);
 			$query->bindParam(':owner', $_SESSION['user_id'], PDO::PARAM_INT);
 			$query->bindParam(':name', $title, PDO::PARAM_STR);
 			$query->bindParam(':description', $description, PDO::PARAM_STR);
+			$query->bindParam(':model', $model, PDO::PARAM_STR);
 			$query->execute();
 			$rows = $query->rowCount();
 			$query->closeCursor();
@@ -727,7 +732,7 @@
 
 			$bdd = Database::getInstance();
 
-			$query = $bdd->prepare('SELECT `username`, `password`, `id`, `email`, `language`, `force2D`, `minecraft_username`, `minecraft_password` FROM `members` WHERE `username` = :username LIMIT 1');
+			$query = $bdd->prepare('SELECT `username`, `password`, `id`, `email`, `language`, `force2d`, `minecraft_username`, `minecraft_password` FROM `members` WHERE `username` = :username LIMIT 1');
 			$query->bindParam(':username', $username, PDO::PARAM_STR);
 			$query->execute();
 			$data = $query->fetch();
