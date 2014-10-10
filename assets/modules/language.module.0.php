@@ -12,23 +12,28 @@
 			trigger_error("Language cannot be instancied");
 		}
 
-		# update the user's language preference if he decided to change it
-
+		/**
+		 * Get the current website language.
+		 *
+		 * @return mixed
+		 */
 		public static function getLanguage()
 		{
 			self::init();
 			return self::$language;
 		}
 
-		# load a language translations file and store it
-
+		/**
+		 * Set the current website language.
+		 *
+		 * @param $lang
+		 * @throws Exception
+		 */
 		public static function setLanguage($lang)
 		{
 			self::$language = $lang;
 			self::loadTranslations();
 		}
-
-		# load the list of available languages
 
 		private static function init()
 		{
@@ -39,11 +44,13 @@
 			self::loadLanguageList();
 		}
 
-		# returns current website language
-
+		/**
+		 * Update the user's language preference if he decided to change it.
+		 */
 		private static function updateLanguage()
 		{
 			global $_URL;
+
 			if (isset($_SESSION['user_id']) && isset($_URL['l']) && ($_URL['l'] != $_SESSION['language'])) {
 				$bdd   = Database::getInstance();
 				$query = $bdd->prepare('UPDATE `members` SET `language` = :language WHERE `id` = :id');
@@ -56,8 +63,9 @@
 			self::setLanguage($_SESSION['language'] = isset($_URL['l']) ? $_URL['l'] : (isset($_SESSION['language']) ? $_SESSION['language'] : 'en_EN'));
 		}
 
-		# set the current website language
-
+		/**
+		 * Load a list of available languages.
+		 */
 		private static function loadLanguageList()
 		{
 			foreach (glob(ROOT . 'assets/php/language/*.lang.php', GLOB_ERR) as $filename) {
@@ -66,17 +74,29 @@
 			}
 		}
 
-		# returns the translation associed with $key in the current language
-
+		/**
+		 * Load a language translations file and store it.
+		 *
+		 * @throws Exception
+		 */
 		private static function loadTranslations()
 		{
 			if (file_exists(ROOT . 'assets/php/language/' . self::$language . '.lang.php')) {
 				require_once(ROOT . 'assets/php/language/' . self::$language . '.lang.php');
 				self::$_TRANSLATIONS = $_LANGUAGE;
-			} else
+			} else {
 				throw new Exception('Can\'t find requested language ' . self::$language);
+			}
 		}
 
+		/**
+		 * Returns the translation associated with $key in the current language.
+		 *
+		 * @param $key
+		 * @param null $params
+		 * @throws Exception
+		 * @return string
+		 */
 		public static function translate($key, $params = null)
 		{
 			self::init();
@@ -87,8 +107,9 @@
 				} else {
 					return self::$_TRANSLATIONS[$key];
 				}
-			} else
+			} else {
 				throw new Exception('Can\'t find requested translation ' . $key . ' in ' . self::$language);
+			}
 		}
 	}
 
