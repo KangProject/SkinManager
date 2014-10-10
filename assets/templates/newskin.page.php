@@ -46,7 +46,7 @@
 			(function () {
 				"use strict";
 
-				var skin_preview = new SkinRender('preview', "assets/img/char.png", 3, true, undefined, <?= ($_SESSION['force2D'] ? 'false' : 'true') ?>);
+				var skin_preview = new SkinRender('preview', "assets/img/char.png", 3, true, undefined, <?= ($_SESSION['force2d'] ? 'false' : 'true') ?>);
 				var newSkinForm = new FormHandler(document.getElementById('newSkinForm'));
 
 				newSkinForm.displayer = function (message) {

@@ -61,7 +61,7 @@
 
 								var user_skinmanager = new SkinManager(userSkinList, undefined, this.user_id, this.user_id == <?=$_SESSION['user_id']?>);
 								user_skinmanager.switchMode = window.SkinManager.SWITCHMODE.<?=($_SESSION['minecraft_username'] === ''?'MCSKINSAPI':'SKINSWITCH')?>;
-								user_skinmanager.display_3D = <?=($_SESSION['force2D']?'false':'true')?>;
+								user_skinmanager.display_3D = <?=($_SESSION['force2d']?'false':'true')?>;
 							});
 
 							user_tag.appendChild(user_tag_link);

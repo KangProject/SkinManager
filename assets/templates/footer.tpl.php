@@ -19,7 +19,7 @@
 			if (window.SkinManager !== undefined) {
 				window.skinBar = new SkinManager(document.getElementById("skinList"), document.getElementById('showSkins'), <?=$_SESSION['user_id']?>, true);
 				window.skinBar.switchMode = window.SkinManager.SWITCHMODE.<?=($_SESSION['minecraft_username'] === ''?'MCSKINSAPI':'SKINSWITCH')?>;
-				window.skinBar.display_3D = <?= ($_SESSION['force2D'] ? 'false' : 'true') ?>;
+				window.skinBar.display_3D = <?= ($_SESSION['force2d'] ? 'false' : 'true') ?>;
 			} else
 				console.error("Can't create skinManager instance, window.skinManager does not exist");
 		})();

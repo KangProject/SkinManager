@@ -14,11 +14,11 @@
 				<label><?= Language::translate('EMAIL') ?></label>
 				<input type="text" name="email" value="<?= $_SESSION['email'] ?>" placeholder="exemple@mail.net">
 				<label><?= Language::translate('GRAPHMODE_SELECT') ?></label>
-				<select name="force2D">
+				<select name="force2d">
 					<option
-						value="0" <?= ($_SESSION['force2D'] ? '' : 'selected') ?>><?= Language::translate('GRAPHMODE_SELECT_3D') ?></option>
+						value="0" <?= ($_SESSION['force2d'] ? '' : 'selected') ?>><?= Language::translate('GRAPHMODE_SELECT_3D') ?></option>
 					<option
-						value="1" <?= ($_SESSION['force2D'] ? 'selected' : '') ?>><?= Language::translate('GRAPHMODE_SELECT_2D') ?></option>
+						value="1" <?= ($_SESSION['force2d'] ? 'selected' : '') ?>><?= Language::translate('GRAPHMODE_SELECT_2D') ?></option>
 				</select>
 				<label><?= Language::translate('SWITCHSKINMODE_SELECT') ?></label>
 				<select name="skinmode">
