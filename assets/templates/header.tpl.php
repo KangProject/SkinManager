@@ -20,7 +20,7 @@
 
 	<?= (isset($_SESSION['user_id'])) ? '
 	<script type="text/javascript" src="assets/js/Modal.class.js"></script>
-	<script type="text/javascript" src="assets/js/Notificater.class.js"></script>
+	<script type="text/javascript" src="assets/js/Notifier.class.js"></script>
 	<script type="text/javascript" src="assets/js/SkinManager.class.js"></script>
 	<script type="text/javascript" src="assets/js/preload.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/Three.js"></script>

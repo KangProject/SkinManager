@@ -11,7 +11,7 @@
 	<script>
 		(function () {
 			"use strict";
-			window.notificater = new Notificater();
+			window.notificater = new Notifier();
 
 			if (window.SkinManager !== undefined) {
 				window.skinBar = new SkinManager(document.getElementById("skinList"), document.getElementById('showSkins'), <?=$_SESSION['user_id']?>, true);

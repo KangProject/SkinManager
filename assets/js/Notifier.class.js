@@ -1,4 +1,4 @@
-var Notificater = function () {
+var Notifier = function () {
     "use strict";
 
     var self = this;
