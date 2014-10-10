@@ -52,6 +52,10 @@
 			newSkinForm.onSuccess = function (data) {
 				window.skinBar.addSkin({id: data.id, title: $("#skinName").val(), description: $("#skinDesc").val()});
 				window.skinBar.showSkinList();
+
+				$("form").trigger('reset');
+				$("#uploadFile").show();
+
 				notificater.hide();
 			};
 
@@ -110,6 +114,9 @@
 									title: $("#skinName").val(),
 									description: $("#skinDesc").val()
 								});
+
+								$("form").trigger('reset');
+								$("#uploadFile").show();
 
 								window.skinBar.showSkinList();
 								notificater.hide();
