@@ -259,6 +259,16 @@
 
 		/**
 		 * Returns the details of the (@link $max) lasted uploaded skins
+		 *
+		 * @deprecated use (@link getLatestSkins) instead
+		 */
+		public function getLastestSkins($max = 15, $start = 0)
+		{
+			return $this->getLatestSkins($max, $start);
+		}
+
+		/**
+		 * Returns the details of the (@link $max) lasted uploaded skins
 		 * (@link $max) must be ranged from 1 to 20
 		 *
 		 * @author  EphysPotato
@@ -268,7 +278,7 @@
 		 * @return array a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
 		 * @return array a JSON Object containing the key 'error', an array of Strings on failure
 		 */
-		public function getLastestSkins($max = 15, $start = 0)
+		public function getLatestSkins($max = 15, $start = 0)
 		{
 			$max = (int)$max;
 			if ($max < 1 || $max > 20)
@@ -631,7 +641,7 @@
 			}
 		}
 
-		public function changeSettings($username, $email, $force2D, $minecraft_username, $minecraft_password, $minecraft_password_key)
+		public function changeSettings($username, $email, $force2d, $minecraft_username, $minecraft_password, $minecraft_password_key)
 		{
 			if (!self::isLogged())
 				return ['error' => ['user not logged in']];
@@ -670,19 +680,19 @@
 			}
 
 			if (empty($errors)) {
-				$force2D = (bool)$force2D;
+				$force2d = (bool)$force2d;
 
 				try {
 					$bdd   = Database::getInstance();
 					$query = $bdd->prepare('UPDATE `members` SET
-										`force2D` = :force2D,
+										`force2d` = :force2d,
 										`username` = :username,
 										`email` = :email,
 										`minecraft_username` = :mcu,
 										`minecraft_password` = :mcp
 										WHERE `id` = :user_id');
 
-					$query->bindParam(':force2D', $force2D, \PDO::PARAM_BOOL);
+					$query->bindParam(':force2d', $force2d, \PDO::PARAM_BOOL);
 					$query->bindParam(':username', $username, \PDO::PARAM_STR);
 					$query->bindParam(':email', $email, \PDO::PARAM_STR);
 					$query->bindParam(':mcu', $minecraft_username, \PDO::PARAM_STR);
@@ -691,7 +701,7 @@
 					$query->execute();
 
 					$_SESSION['username']           = $username;
-					$_SESSION['force2D']            = $force2D;
+					$_SESSION['force2d']            = $force2d;
 					$_SESSION['email']              = $email;
 					$_SESSION['minecraft_username'] = $minecraft_username;
 					$_SESSION['minecraft_password'] = $minecraft_password;
@@ -743,7 +753,7 @@
 
 			$bdd = Database::getInstance();
 
-			$query = $bdd->prepare('SELECT `username`, `password`, `id`, `email`, `language`, `force2D`, `minecraft_username`, `minecraft_password` FROM `members` WHERE `username` = :username LIMIT 1');
+			$query = $bdd->prepare('SELECT `username`, `password`, `id`, `email`, `language`, `force2d`, `minecraft_username`, `minecraft_password` FROM `members` WHERE `username` = :username LIMIT 1');
 			$query->bindParam(':username', $username, \PDO::PARAM_STR);
 			$query->execute();
 			$data = $query->fetch();
@@ -757,7 +767,7 @@
 				$_SESSION['email']              = $data['email'];
 				$_SESSION['user_id']            = (int)$data['id'];
 				$_SESSION['language']           = $data['language'];
-				$_SESSION['force2D']            = (bool)$data['force2D'];
+				$_SESSION['force2d']            = (bool)$data['force2d'];
 				$_SESSION['minecraft_username'] = $data['minecraft_username'];
 				$_SESSION['minecraft_password'] = $data['minecraft_password'];
 
@@ -847,7 +857,7 @@
 					$_SESSION['username']           = $username;
 					$_SESSION['email']              = $email;
 					$_SESSION['user_id']            = $db->lastInsertId();
-					$_SESSION['force2D']            = false;
+					$_SESSION['force2d']            = false;
 					$_SESSION['minecraft_username'] = '';
 					$_SESSION['minecraft_password'] = '';
 
