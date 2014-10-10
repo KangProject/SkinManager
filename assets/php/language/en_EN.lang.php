@@ -97,6 +97,6 @@ aboutContent;
 	$_LANGUAGE['INTRO']                  = <<<intro
 	<p><b>SkinManager</b> allows you to <b>manage your skins</b> easily and to <b>switch</b> your ingame skin from one to another easily.
 	<br>If you don't have your own skin, you may also view the other members's skin list to <b>find</b> and <b>freely edit</b> the one that matches you !
-	<br><br>By logging in, you accept the <a href="terms_of_use/">Term of use [FR]</a> of Skin Manager</p>
+	<br><br>By logging in, you accept the <a href="terms_of_use/">Terms of Use [FR]</a> of Skin Manager</p>
 intro;
 ?>
