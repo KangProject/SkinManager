@@ -26,8 +26,10 @@
 			<input id="skinURL" name="url" type="text" placeholder="http://example.com/skin.png">
 			<button class="btn-blue" id="btn_submitSkin" type="submit"><?= Language::translate('SKIN_LOAD_SUBMIT') ?></button>
 
-			<label class="control-label" for="skinFile"><?= Language::translate('SKIN_LOAD_UPLOAD') ?></label>
-			<div id="skinFile"></div>
+			<div id="uploadFile">
+				<label class="control-label" for="skinFile"><?= Language::translate('SKIN_LOAD_UPLOAD') ?></label>
+				<div id="skinFile"></div>
+			</div>
 		</form>
 	</section>
 	<script src="assets/js/plugins/fineuploader/fineuploader-3.6.4.min.js"></script>
@@ -56,9 +58,9 @@
 			newSkinForm.inputs.url.keyup = function (value) {
 				if (value !== '') {
 					previewSkin();
-					$("#skinFile").hide();
+					$("#uploadFile").hide();
 				} else {
-					$("#skinFile").show();
+					$("#uploadFile").show();
 				}
 			};
 
