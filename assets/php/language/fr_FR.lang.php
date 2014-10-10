@@ -57,9 +57,12 @@
 	$_LANGUAGE['SKIN_NAME']              = 'Nom du skin';
 	$_LANGUAGE['SKIN_DESCRIPTION']       = 'Description';
 	$_LANGUAGE['SKIN_MODEL']             = 'Modèle';
+	$_LANGUAGE['SKIN_MODEL_STEVE']       = 'Steve (normal)';
+	$_LANGUAGE['SKIN_MODEL_ALEX']        = 'Alex (bras fins)';
 	$_LANGUAGE['SKIN_LOAD']              = 'Source:';
-	$_LANGUAGE['SKIN_LOAD_URL']          = 'URL du skin';
-	$_LANGUAGE['SKIN_LOAD_UPLOAD']       = 'Uploader un skin';
+	$_LANGUAGE['SKIN_LOAD_URL']          = 'Depuis une URL';
+	$_LANGUAGE['SKIN_LOAD_UPLOAD']       = 'Depuis votre ordinateur';
+	$_LANGUAGE['SKIN_LOAD_SUBMIT']       = 'Envoyer';
 	$_LANGUAGE['SKIN_EDIT']              = 'Editer les infos';
 	$_LANGUAGE['TOOL_PEN']               = 'Crayon';
 	$_LANGUAGE['TOOL_PIPETTE']           = 'Pipette';

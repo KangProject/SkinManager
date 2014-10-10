@@ -266,6 +266,10 @@ form .fieldgroup-center {
   text-align: center;
   margin-top: 15px;
 }
+form .qq-upload-button {
+  width: 310px;
+  margin: 20px;
+}
 form.form-vertical {
   text-align: center;
 }
