@@ -312,7 +312,7 @@
 		{
 			require_once(dirname(__FILE__) . '/inc/skin_creator.inc.php');
 
-			$uploader = new skin_creator();
+			$uploader = new SkinCreator();
 			$uploader->upload_url($url, true);
 		}
 
@@ -379,7 +379,7 @@
 
 			require_once(dirname(__FILE__) . '/inc/skin_creator.inc.php');
 
-			$uploader              = new skin_creator();
+			$uploader              = new SkinCreator();
 			$uploader->name        = $name;
 			$uploader->description = $description;
 			$uploader->model       = $model;
@@ -411,7 +411,7 @@
 
 			require_once(dirname(__FILE__) . '/inc/skin_creator.inc.php');
 
-			$uploader              = new skin_creator();
+			$uploader              = new SkinCreator();
 			$uploader->name        = $name;
 			$uploader->description = $description;
 			$uploader->model       = $model;
@@ -440,7 +440,7 @@
 			if ($data['error'] !== 0)
 				return ['error' => [Language::translate('ERROR_UNKNOW')], 'detail' => $data['error']];
 
-			$uploader              = new skin_creator();
+			$uploader              = new SkinCreator();
 			$uploader->name        = $name;
 			$uploader->description = $description;
 			$uploader->model       = $model;
@@ -584,7 +584,7 @@
 				return ['error' => ['Invalid base image']];
 
 			require_once dirname(__FILE__) . '/inc/skin_creator.inc.php';
-			$uploader = new skin_creator();
+			$uploader = new SkinCreator();
 			return $uploader->updateSkin($image, $id);
 		}
 
@@ -606,10 +606,10 @@
 
 				$url = urldecode($url);
 
-				require_once ROOT . 'assets/php/inc/Chiffrement.class.php';
+				require_once ROOT . 'assets/php/inc/Crypto.class.php';
 				require_once ROOT . 'assets/php/inc/SkinSwitcher.class.php';
 
-				$crypter            = new Chiffrement($passphrase);
+				$crypter            = new Crypto($passphrase);
 				$minecraft_password = $crypter->decrypt($data['minecraft_password']);
 
 				$skinswitch = new SkinSwitcher($data['minecraft_username'], $minecraft_password);
@@ -655,8 +655,8 @@
 					if (empty($minecraft_password_key))
 						$errors[] = Language::translate('MINECRAFT_PASSWORD_KEY_MISSING');
 					else {
-						require_once ROOT . 'assets/php/inc/Chiffrement.class.php';
-						$crypter            = new Chiffrement($minecraft_password_key);
+						require_once ROOT . 'assets/php/inc/Crypto.class.php';
+						$crypter            = new Crypto($minecraft_password_key);
 						$minecraft_password = $crypter->crypt($minecraft_password);
 					}
 				} else {

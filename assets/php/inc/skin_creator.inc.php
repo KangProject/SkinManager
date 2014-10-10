@@ -1,7 +1,7 @@
 <?php
 	require_once('skin_formater.inc.php');
 
-	class skin_creator
+	class SkinCreator
 	{
 		public $name, $description, $model;
 

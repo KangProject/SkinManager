@@ -247,4 +247,4 @@
 		}
 	}
 
-	new router(str_replace('/SkinManager', '', $_SERVER['REDIRECT_URL']));
+	new Router(str_replace('/SkinManager', '', $_SERVER['REDIRECT_URL']));

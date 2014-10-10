@@ -1,6 +1,6 @@
 <?php
 
-	class Chiffrement
+	class Crypto
 	{
 		public $key = '';
 		private $cipher = MCRYPT_RIJNDAEL_128;
