@@ -15,7 +15,7 @@ you're pretty much free to do what you want with it.
 Furthermore, I can't be arsed to relicense it, so this fork is also available under the WTFPL. Have fun with it!
 
 
-Licence
+License
 =======
 
                 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
