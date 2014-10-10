@@ -670,7 +670,7 @@
 				try {
 					$bdd   = Database::getInstance();
 					$query = $bdd->prepare('UPDATE `members` SET
-										`force2d` = :force2D,
+										`force2D` = :force2D,
 										`username` = :username,
 										`email` = :email,
 										`minecraft_username` = :mcu,
@@ -737,7 +737,7 @@
 
 			$bdd = Database::getInstance();
 
-			$query = $bdd->prepare('SELECT `username`, `password`, `id`, `email`, `language`, `force2d`, `minecraft_username`, `minecraft_password` FROM `members` WHERE `username` = :username LIMIT 1');
+			$query = $bdd->prepare('SELECT `username`, `password`, `id`, `email`, `language`, `force2D`, `minecraft_username`, `minecraft_password` FROM `members` WHERE `username` = :username LIMIT 1');
 			$query->bindParam(':username', $username, PDO::PARAM_STR);
 			$query->execute();
 			$data = $query->fetch();

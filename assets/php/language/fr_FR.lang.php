@@ -1,6 +1,7 @@
 <?php
 	$_LANGUAGE['PASSWORD']                 = 'Mot de passe';
 	$_LANGUAGE['EMAIL']                    = 'Email';
+	$_LANGUAGE['USERNAME']                 = 'Nom d\'utilisateur';
 	$_LANGUAGE['CONF']                     = 'Confirmation';
 	$_LANGUAGE['CONF_NO_MATCH']            = 'La confirmation ne correspond pas';
 	$_LANGUAGE['USER_ALREADY_REGISTERED']  = 'Ce nom d\'utilisateur existe déjà';
@@ -29,7 +30,7 @@
 	$_LANGUAGE['SWITCHSKINMODE_SELECT_OFFICAL']    = 'API Minecraft.net officielle';
 	$_LANGUAGE['SWITCHSKINMODE_SELECT_SKINSWITCH'] = 'SkinSwitch (plus pratique)';
 
-	$_LANGUAGE['PROFILES_BTN']           = 'Profils';
+	$_LANGUAGE['PROFILES_BTN']           = 'Utilisateurs';
 	$_LANGUAGE['LOGIN']                  = 'Se connecter';
 	$_LANGUAGE['REGISTER']               = 'S\'inscrire';
 	$_LANGUAGE['LOGIN_WAIT']             = 'Connexion...';
@@ -45,6 +46,7 @@
 	$_LANGUAGE['ERROR_CANVAS']           = 'Votre navigateur ne supporte pas Canvas. Impossible d\'éditer le skin.';
 	$_LANGUAGE['ERROR_MIGRATED']         = 'Vous possédez un compte Mojang, utilisez votre adresse email.';
 	$_LANGUAGE['SEARCH']                 = 'Rechercher';
+	$_LANGUAGE['SEARCH_USER']            = 'Rechercher par utilisateur';
 	$_LANGUAGE['ACCOUNT']                = 'Compte';
 	$_LANGUAGE['ACCOUNT_MIGRATED']       = 'Votre compte a été migré. Veuillez vous connecter avec votre adresse email.';
 	$_LANGUAGE['EDIT']                   = 'Éditer';

@@ -4,7 +4,7 @@
 	<section>
 		<?= Language::translate('INTRO') ?>
 		<form action="json/" class="form-vertical shell" id="loginForm">
-			<input type="text" name="username" placeholder="<?= Language::translate('SKIN_LOAD_USERNAME') ?>">
+			<input type="text" name="username" placeholder="<?= Language::translate('USERNAME') ?>">
 			<input type="password" name="password" placeholder="<?= Language::translate('LOGIN_PASSWORD') ?>">
 			<input type="submit" data-loading-text="<?= Language::translate('LOGIN_WAIT') ?>" class="btn-blue"
 			       value="<?= Language::translate('LOGIN') ?>">

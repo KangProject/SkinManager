@@ -3,7 +3,7 @@
 		<h2><?= Language::translate('ACCOUNT') ?></h2>
 
 		<form action="json/" id="settingsForm" method="post" class="form-vertical shell large" autocomplete="off">
-			<label><?= Language::translate('SKIN_LOAD_USERNAME') ?></label>
+			<label><?= Language::translate('USERNAME') ?></label>
 			<input type="text" name="username" value="<?= $_SESSION['username'] ?>"
 			       placeholder="<?= Language::translate('USERNAME_ALPHANUMERIC') ?>">
 			<label><?= Language::translate('EMAIL') ?></label>

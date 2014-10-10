@@ -4,7 +4,7 @@
 
 		<form action="javascript:void(0);" class="shell">
 			<div class="fieldgroup">
-				<label for="skinName"><?= Language::translate('SEARCH') ?></label>
+				<label for="skinName"><?= Language::translate('SEARCH_USER') ?></label>
 				<input id="skinName" type="text" placeholder="<?= Language::translate('FIND_USERNAME') ?>"
 				       value="">
 			</div>

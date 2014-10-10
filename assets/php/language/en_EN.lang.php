@@ -1,6 +1,7 @@
 <?php
 	$_LANGUAGE['PASSWORD']                 = 'Password';
 	$_LANGUAGE['EMAIL']                    = 'Email address';
+	$_LANGUAGE['USERNAME']                 = 'Username';
 	$_LANGUAGE['CONF']                     = 'Confirmation';
 	$_LANGUAGE['CONF_NO_MATCH']            = 'Your password and the confirmation don\'t match';
 	$_LANGUAGE['USER_ALREADY_REGISTERED']  = 'This username is already registered';
@@ -29,7 +30,7 @@
 	$_LANGUAGE['SWITCHSKINMODE_SELECT_OFFICAL']    = 'Official Minecraft.net API';
 	$_LANGUAGE['SWITCHSKINMODE_SELECT_SKINSWITCH'] = 'SkinSwitch (easier)';
 
-	$_LANGUAGE['PROFILES_BTN']           = 'Profiles';
+	$_LANGUAGE['PROFILES_BTN']           = 'Users';
 	$_LANGUAGE['LOGIN']                  = 'Log in';
 	$_LANGUAGE['REGISTER']               = 'Register';
 	$_LANGUAGE['LOGIN_WAIT']             = 'Logging in...';
@@ -45,6 +46,7 @@
 	$_LANGUAGE['ERROR_CANVAS']           = 'Your navigator doesn\'t support canvas, try using something more recent.';
 	$_LANGUAGE['ERROR_MIGRATED']         = 'You migrated to a Mojang account, use your email address instead of your username.';
 	$_LANGUAGE['SEARCH']                 = 'Search';
+	$_LANGUAGE['SEARCH_USER']            = 'Search by user';
 	$_LANGUAGE['ACCOUNT']                = 'Account';
 	$_LANGUAGE['ACCOUNT_MIGRATED']       = 'Your account has migrated. Please use your email address';
 	$_LANGUAGE['EDIT']                   = 'Edit';

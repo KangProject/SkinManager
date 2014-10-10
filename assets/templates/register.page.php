@@ -6,8 +6,8 @@
 	<h2><?= Language::translate('REGISTER') ?></h2>
 
 	<form action="json/" id="form_register" method="post" class="shell form-vertical large">
-		<label><?= Language::translate('SKIN_LOAD_USERNAME') ?></label>
-		<input type="text" name="username" placeholder="<?= Language::translate('SKIN_LOAD_USERNAME') ?>" value=""
+		<label><?= Language::translate('USERNAME') ?></label>
+		<input type="text" name="username" placeholder="<?= Language::translate('USERNAME') ?>" value=""
 		       maxlength="255">
 		<label><?= Language::translate('PASSWORD') ?></label>
 		<input type="password" name="password" placeholder="<?= Language::translate('PASSWORD') ?>">
