@@ -1,3 +1,4 @@
+<?php namespace EphysCMS; ?>
 <section>
 	<div class="phpdoc">
 		<h2>Skin Manager API
@@ -15,10 +16,13 @@
 
 		<?php
 			require_once ROOT . 'assets/php/API.class.php';
-			$class = new ReflectionClass('API');
+
+			$class = new \ReflectionClass('EphysCMS\API');
+
 			echo '<p>' . parsePHPDoc($class->getDocComment()) . '</p>';
 			echo '<h3>Available Methods</h3>';
-			foreach ($class->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
+
+			foreach ($class->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
 				if (($phpdoc = $method->getDocComment()) !== false) {
 					echo '<p class="method">' . (($method->isDeprecated()) ? '<b>DEPRECATED</b> ' : '') . 'method: <i>' . $method->name . '</i>';
 					$optParams = '';
