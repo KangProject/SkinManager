@@ -118,7 +118,7 @@
 		 * @param   String $match the researched username
 		 * @param   int $max the maximum amount of returned results
 		 * @param   int $start the total of result to skip before starting to collect the results
-		 * @return  a JSON Array  containing JSON Objects containing the keys 'id' and 'username'
+		 * @return  array a JSON Array  containing JSON Objects containing the keys 'id' and 'username'
 		 */
 		public function loadUserList($match, $max = 15, $start = 0)
 		{
@@ -154,7 +154,7 @@
 		 * @param   int $user the skinlist owner
 		 * @param   int $max the maximum amount of returned results
 		 * @param   int $start the total of result to skip before starting to collect the results (used only if $max > 0)
-		 * @return  a JSON Array  containing a JSON Object per skin which itself contains the keys 'id', 'title' and 'description'
+		 * @return  array a JSON Array  containing a JSON Object per skin which itself contains the keys 'id', 'title' and 'description'
 		 */
 		public function loadSkins($user, $max = 0, $start = 0)
 		{
@@ -192,8 +192,8 @@
 		 * @author  EphysPotato
 		 * @version 1.0
 		 * @param   int $id the skin id
-		 * @return  a JSON Object containing the keys 'owner', 'title' and 'description' on success
-		 * @return  a JSON Object containing the key 'error', an array of Strings on failure
+		 * @return array a JSON Object containing the keys 'owner', 'title' and 'description' on success
+		 * @return array a JSON Object containing the key 'error', an array of Strings on failure
 		 */
 		public function loadSkin($id)
 		{
@@ -226,27 +226,30 @@
 		 * @param   String $match A skin name
 		 * @param   int $max The maximum amount of returned results
 		 * @param   int $start the total of result to skip before starting to collect the results
-		 * @return  a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
-		 * @return  a JSON Object containing the key 'error', an array of Strings on failure
+		 * @return array a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
+		 * @return array a JSON Object containing the key 'error', an array of Strings on failure
 		 */
 		public function searchSkinByName($match, $max = 15, $start = 0)
 		{
-			$bdd = Database::getInstance();
-
-			if (empty($match))
+			if (empty($match)) {
 				return [];
+			}
 
 			$max = (int)$max;
-			if ($max < 1 || $max > 20)
+
+			if ($max < 1 || $max > 20) {
 				return ['error' => ['$max muse be ranged from 1 to 20']];
+			}
 
 			$start = (int)$start;
 			$match = addcslashes($match, '[]()*?^\\+|$');
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id`, s.`model` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` WHERE s.`title` REGEXP :title ORDER BY s.`title` LIMIT :start, :max');
+
 			$query->bindParam(':title', $match, \PDO::PARAM_STR);
 			$query->bindParam(':max', $max, \PDO::PARAM_INT);
 			$query->bindParam(':start', $start, \PDO::PARAM_INT);
+
 			$query->execute();
 			$data = $query->fetchAll(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
@@ -262,8 +265,8 @@
 		 * @version 1.0
 		 * @param   int $max The maximum amount of returned results
 		 * @param   int $start the total of result to skip before starting to collect the results
-		 * @return  a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
-		 * @return  a JSON Object containing the key 'error', an array of Strings on failure
+		 * @return array a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
+		 * @return array a JSON Object containing the key 'error', an array of Strings on failure
 		 */
 		public function getLastestSkins($max = 15, $start = 0)
 		{
@@ -290,16 +293,16 @@
 		 * @author  EphysPotato
 		 * @version 1.0
 		 * @param   int $max The maximum amount of returned results
-		 * @return  a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
-		 * @return  a JSON Object containing the key 'error', an array of Strings on failure
+		 * @return array a JSON Object containing the keys 'id', 'owner', 'title' and 'description' on success
+		 * @return array a JSON Object containing the key 'error', an array of Strings on failure
 		 */
 		public function getRandomSkins($max = 15)
 		{
-			$bdd = Database::getInstance();
-
 			$max = (int)$max;
-			if ($max < 1 || $max > 20)
+
+			if ($max < 1 || $max > 20) {
 				return ['error' => ['$max muse be ranged from 1 to 20']];
+			}
 
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('SELECT m.`username` AS `owner_username`, s.`owner` AS `owner_id`, s.`title`, s.`description`, s.`id`, s.`model` FROM `skins` s LEFT JOIN `members` m ON m.`id` = s.`owner` ORDER BY Rand() DESC LIMIT :max');
@@ -326,8 +329,8 @@
 		 * @version 1.1
 		 * @param   int $id the skin id
 		 * @param   bool $base64 select the output encoding as base64 instead of binary
-		 * @return  a binary-encoded image if (@link $base64) equals false
-		 * @return  a base64-encoded image if (@link $base64) equals true
+		 * @return  string a binary-encoded image if (@link $base64) equals false
+		 * @return  string a base64-encoded image if (@link $base64) equals true
 		 */
 		public function getSkin($id, $base64 = false)
 		{
@@ -651,8 +654,7 @@
 			}
 
 			if (empty($minecraft_username)) {
-				$minecraft_password     = '';
-				$minecraft_password_key = '';
+				$minecraft_password = '';
 			} else {
 				if (!empty($minecraft_password)) {
 					if (empty($minecraft_password_key))
@@ -673,7 +675,7 @@
 				try {
 					$bdd   = Database::getInstance();
 					$query = $bdd->prepare('UPDATE `members` SET
-										`force2D` = :force2D,
+										`force2d` = :force2D,
 										`username` = :username,
 										`email` = :email,
 										`minecraft_username` = :mcu,
@@ -741,7 +743,7 @@
 
 			$bdd = Database::getInstance();
 
-			$query = $bdd->prepare('SELECT `username`, `password`, `id`, `email`, `language`, `force2D`, `minecraft_username`, `minecraft_password` FROM `members` WHERE `username` = :username LIMIT 1');
+			$query = $bdd->prepare('SELECT `username`, `password`, `id`, `email`, `language`, `force2d`, `minecraft_username`, `minecraft_password` FROM `members` WHERE `username` = :username LIMIT 1');
 			$query->bindParam(':username', $username, \PDO::PARAM_STR);
 			$query->execute();
 			$data = $query->fetch();
@@ -829,6 +831,7 @@
 			if (count($errors) === 0) {
 				$password = crypt($password);
 				$db       = Database::getInstance();
+
 				try {
 					$query = $db->prepare('INSERT INTO `members`(`username`, `password`, `email`) VALUES(:username, :password, :email)');
 					$query->bindParam(':username', $username, \PDO::PARAM_STR);

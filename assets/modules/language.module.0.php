@@ -30,7 +30,7 @@
 		 * Set the current website language.
 		 *
 		 * @param $lang
-		 * @throws Exception
+		 * @throws \Exception
 		 */
 		public static function setLanguage($lang)
 		{
