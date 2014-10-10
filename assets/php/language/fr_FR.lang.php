@@ -59,7 +59,6 @@
 	$_LANGUAGE['SKIN_MODEL']             = 'Modèle';
 	$_LANGUAGE['SKIN_LOAD']              = 'Source:';
 	$_LANGUAGE['SKIN_LOAD_URL']          = 'URL du skin';
-	$_LANGUAGE['SKIN_LOAD_USERNAME']     = 'Pseudo';
 	$_LANGUAGE['SKIN_LOAD_UPLOAD']       = 'Uploader un skin';
 	$_LANGUAGE['SKIN_EDIT']              = 'Editer les infos';
 	$_LANGUAGE['TOOL_PEN']               = 'Crayon';

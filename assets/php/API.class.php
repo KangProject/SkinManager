@@ -365,7 +365,7 @@
 			readfile($file);
 		}
 
-		public function addSkin($name, $description, $url = '', $username = '', $model = 'steve')
+		public function addSkin($name, $description, $url = '', $model = 'steve')
 		{
 			$errors = [];
 			if (!self::isLogged())
@@ -386,8 +386,6 @@
 
 			if ($url !== '') {
 				return $uploader->upload_url($url);
-			} elseif ($username !== '') {
-				return $uploader->upload_url("http://s3.amazonaws.com/MinecraftSkins/" . $username . ".png");
 			} else {
 				return ['error' => [Language::translate('ERROR_NO_URL')]];
 			}

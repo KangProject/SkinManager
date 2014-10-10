@@ -24,10 +24,6 @@
 			<h3><?= Language::translate('SKIN_LOAD') ?></h3>
 			<label for="skinURL"><?= Language::translate('SKIN_LOAD_URL') ?></label>
 			<input id="skinURL" name="url" type="text" placeholder="<?= Language::translate('SKIN_LOAD_URL') ?>">
-			<label for="skinUsername"><?= Language::translate('MC_PLAYER') ?>
-				(<?= Language::translate('CASE_SENSITIVE') ?>)</label>
-			<input id="skinUsername" name="username" type="text"
-			       placeholder="<?= Language::translate('SKIN_LOAD_USERNAME') ?>">
 
 			<label class="control-label" for="skinFile"><?= Language::translate('SKIN_LOAD_UPLOAD') ?></label>
 			<div id="skinFile"></div>
@@ -60,23 +56,11 @@
 				notificater.hide();
 			};
 
-			newSkinForm.inputs.username.keyup = function (value) {
-				if (value !== '') {
-					$("#skinFile").hide();
-					$("#skinURL").attr('disabled', 'true');
-				} else {
-					$("#skinFile").show();
-					$("#skinURL").removeAttr('disabled');
-				}
-			};
-
 			newSkinForm.inputs.url.keyup = function (value) {
 				if (value !== '') {
 					$("#skinFile").hide();
-					$("#skinUsername").attr('disabled', 'true');
 				} else {
 					$("#skinFile").show();
-					$("#skinUsername").removeAttr('disabled');
 				}
 			};
 
@@ -84,9 +68,8 @@
 				e.preventDefault();
 
 				var url;
-				if ($("#skinUsername").val() !== "")
-					url = "http://s3.amazonaws.com/MinecraftSkins/" + $("#skinUsername").val() + ".png";
-				else if ($("#skinURL").val() !== "")
+
+				if ($("#skinURL").val() !== "")
 					url = $("#skinURL").val();
 				else {
 					notificater.notify(_LANGUAGE['ERROR_NO_URL']);
@@ -106,7 +89,6 @@
 					debug: false,
 					element: document.getElementById('skinFile'),
 					request: {
-						// params: { method: 'uploadSkin', name: $("#skinName").val(), description: $("#skinDesc").val() },
 						endpoint: 'json/'
 					},
 					validation: {

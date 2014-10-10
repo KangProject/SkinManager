@@ -15,7 +15,6 @@
 	$_LANGUAGE['UNREGISTER']               = 'Delete my account';
 	$_LANGUAGE['UNREGISTER_WARNING']       = 'Warning: once deleted, all of your registered skins will be deleted. No data will be kept on this website.';
 
-
 	$_LANGUAGE['GRAPHMODE_SELECT']               = 'Skin display type';
 	$_LANGUAGE['GRAPHMODE_SELECT_2D']            = '2D only (faster)';
 	$_LANGUAGE['GRAPHMODE_SELECT_3D']            = '3D if available';
@@ -60,7 +59,6 @@
 	$_LANGUAGE['SKIN_MODEL']             = 'Skin Model';
 	$_LANGUAGE['SKIN_LOAD']              = 'Skin Source:';
 	$_LANGUAGE['SKIN_LOAD_URL']          = 'Skin URL';
-	$_LANGUAGE['SKIN_LOAD_USERNAME']     = 'Username';
 	$_LANGUAGE['SKIN_LOAD_UPLOAD']       = 'From your computer';
 	$_LANGUAGE['SKIN_EDIT']              = 'Edit Skin';
 	$_LANGUAGE['TOOL_PEN']               = 'Pen';
