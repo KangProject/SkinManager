@@ -80,7 +80,7 @@
 	$_LANGUAGE['CANCEL']                 = 'Retour';
 	$_LANGUAGE['SAVE']                   = 'Sauvegarder';
 	$_LANGUAGE['SAVE_COMPLETED']         = 'Modifications enregistrées';
-	$_LANGUAGE['MC_PLAYER']              = 'Joueur Minecraft';
+	$_LANGUAGE['FIND_USERNAME']          = 'Pseudo...';
 	$_LANGUAGE['ABOUT_BTN']              = 'À propos';
 	$_LANGUAGE['DISCONNECT']             = 'Déconnecter';
 	$_LANGUAGE['ACCOUNT_DELETE_CONFIRM'] = 'Attention ! Effacer le compte conduira à la perte des données qui y sont associées.';

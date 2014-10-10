@@ -52,6 +52,7 @@ footer img {
 }
 #userSkinList img {
   margin: 10px;
+  cursor: pointer;
 }
 aside {
   z-index: 1;

@@ -80,7 +80,7 @@
 	$_LANGUAGE['CANCEL']                 = 'Return';
 	$_LANGUAGE['SAVE']                   = 'Save';
 	$_LANGUAGE['SAVE_COMPLETED']         = 'Saved successfully';
-	$_LANGUAGE['MC_PLAYER']              = 'Minecraft Player';
+	$_LANGUAGE['FIND_USERNAME']          = 'Username...';
 	$_LANGUAGE['ABOUT_BTN']              = 'About';
 	$_LANGUAGE['DISCONNECT']             = 'Logout';
 	$_LANGUAGE['ACCOUNT_DELETE_CONFIRM'] = 'Warning! By doing this, you will lose all the data saved on this website.';

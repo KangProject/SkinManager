@@ -5,7 +5,7 @@
 		<form action="javascript:void(0);" class="shell">
 			<div class="fieldgroup">
 				<label for="skinName"><?= Language::translate('SEARCH') ?></label>
-				<input id="skinName" type="text" placeholder="<?= Language::translate('SKIN_LOAD_USERNAME') ?>"
+				<input id="skinName" type="text" placeholder="<?= Language::translate('FIND_USERNAME') ?>"
 				       value="">
 			</div>
 			<div id="userList"></div>
@@ -38,6 +38,7 @@
 
 					var userListContainer = document.getElementById('userList');
 					userListContainer.innerHTML = '';
+
 					for (var i = 0; i < userList.length; i++) {
 						var user_tag = document.createElement('p');
 						user_tag.className = 'user_icon';
