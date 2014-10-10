@@ -41,6 +41,7 @@
 	</section>
 	<script src="assets/js/plugins/fineuploader/fineuploader-3.6.4.min.js"></script>
 	<script>
+
 		(function () {
 			"use strict";
 			var skin_preview = new SkinRender('preview', "assets/img/char.png", 1, true, undefined, <?=($_SESSION['force2D']?'false':'true')?>);
@@ -57,7 +58,7 @@
 				window.skinBar.addSkin({id: data.id, title: $("#skinName").val(), description: $("#skinDesc").val()});
 				window.skinBar.showSkinList();
 				notificater.hide();
-			}
+			};
 
 			newSkinForm.inputs.username.keyup = function (value) {
 				if (value !== '') {
@@ -67,7 +68,7 @@
 					$("#skinFile").show();
 					$("#skinURL").removeAttr('disabled');
 				}
-			}
+			};
 
 			newSkinForm.inputs.url.keyup = function (value) {
 				if (value !== '') {
@@ -77,7 +78,7 @@
 					$("#skinFile").show();
 					$("#skinUsername").removeAttr('disabled');
 				}
-			}
+			};
 
 			$("#btn_previewSkin").click(function (e) {
 				e.preventDefault();
@@ -138,6 +139,7 @@
 				});
 			};
 		})();
+
 	</script>
 <?php
 } else {
