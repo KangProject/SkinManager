@@ -1,6 +1,9 @@
-<section id="footer"><p>&copy; <a href="http://dlp.fr.nf/">DLProduction</a> 2012 - 2014, &copy; <a
-			href="http://dev.outadoc.fr">outa[dev]</a> <?php echo date('Y'); ?> - <a href="api/">API</a> - <a
-			href="http://dev.outadoc.fr/project/skinswitch">SkinSwitch (Android/iOS)</a></p>
+<section id="footer">
+	<p>
+		&copy; <a href="http://ephys.fr.nf">DLProduction</a> 2012 - 2014,
+		&copy; <a href="http://dev.outadoc.fr">outa[dev]</a> <?php echo date('Y'); ?>
+		- <a href="api/">API</a>
+	</p>
 </section>
 <footer>
 	<a href="<?= PAGE_RELATIVE ?>l/en_EN"><img src="assets/img/flags/en_EN.png"/></a>
@@ -11,7 +14,7 @@
 	<script>
 		(function () {
 			"use strict";
-			window.notificater = new Notifier();
+			window.notifier = new Notifier();
 
 			if (window.SkinManager !== undefined) {
 				window.skinBar = new SkinManager(document.getElementById("skinList"), document.getElementById('showSkins'), <?=$_SESSION['user_id']?>, true);
