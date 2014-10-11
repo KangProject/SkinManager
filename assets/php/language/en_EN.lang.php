@@ -65,7 +65,7 @@
 	$_LANGUAGE['SKIN_LOAD_URL']          = 'From an URL';
 	$_LANGUAGE['SKIN_LOAD_UPLOAD']       = 'From your computer';
 	$_LANGUAGE['SKIN_LOAD_SUBMIT']       = 'Upload';
-	$_LANGUAGE['SKIN_EDIT']              = 'Edit Skin';
+	$_LANGUAGE['SKIN_EDIT']              = 'Edit';
 	$_LANGUAGE['TOOL_PEN']               = 'Pen';
 	$_LANGUAGE['TOOL_PIPETTE']           = 'Picker';
 	$_LANGUAGE['TOOL_ERASER']            = 'Eraser';

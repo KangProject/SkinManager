@@ -55,7 +55,12 @@
 			}
 
 			define('ROOT', dirname(__FILE__) . '/');
-			define('PAGE_RELATIVE', WEBSITE_ROOT . self::$page . '/');
+
+			if (isset($_URL['l'])) {
+				define('PAGE_RELATIVE', $url . '../../');
+			} else {
+				define('PAGE_RELATIVE', $url);
+			}
 
 			$this->loadModules();
 			self::setResponseCode($this->getDefaultResponseCode());

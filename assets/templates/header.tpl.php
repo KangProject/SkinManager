@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<base href="<?= WEBSITE_ROOT ?>">
 	<meta charset="utf-8">
+	<base href="<?= WEBSITE_ROOT ?>">
+
 	<meta name="keywords" lang="fr" content="skin, manage, favori, outadoc, ephyspotato, Minecraft">
 	<meta name="description" content="Changer de skin Minecraft en un clic! - Switch your Minecraft skin simply!">
 
