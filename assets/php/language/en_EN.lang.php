@@ -92,10 +92,10 @@
 <h2>About Skin Manager</h2>
 
 <p><b>Skin Manager</b> is a web-based tool for <a href="http://www.minecraft.net/">Minecraft</a> developed by
-<a href="http://dlp.fr.nf/">@EphysPotato</a>. Its purpose is to allow Minecraft players to save their skin and let them
-easily switch between these, only by pressing a single button instead of uploading the skin every time.</p>
-<p>This tool is based on <a href="http://dev.outadoc.fr/">@outadoc</a>'s iOS version of it:
-<a href="http://itunes.apple.com/fr/app/skinswitch-for-minecraft/id524911308">SkinSwitch</a></p>
+<a href="https://twitter.com/ephyspotato">@EphysPotato</a> and <a href="https://twitter.com/outadoc/">@outadoc</a>.</p>
+<p>Its purpose is to allow Minecraft players to save their skin and let them easily switch between these, only by pressing
+a single button instead of uploading the skin every time.</p>
+<p>Skin Manager is also available for mobile devices as <a href="http://dev.outadoc.fr/project/skinswitch">SkinSwitch</a>, on iOS as well as on Android.</p>
 aboutContent;
 	$_LANGUAGE['INTRO']                  = <<<intro
 	<p><b>SkinManager</b> allows you to <b>manage your skins</b> easily and to <b>switch</b> your ingame skin from one to another easily.
