@@ -5,9 +5,9 @@
 	class Router
 	{
 		const DEV_MODE = true;
-		const WEBSITE_SUBDIRECTORY = "SkinManager";
+		const WEBSITE_SUBDIRECTORY = "SkinManager/";
 
-		const WEBSITE_ROOT_DEV = "http://localhost/SkinManager/";
+		const WEBSITE_ROOT_DEV = "http://localhost/dev/web/SkinManager/";
 		const WEBSITE_ROOT_PROD = "http://skin.outadoc.fr/";
 
 		const DEFAULT_PAGE = 'home';
@@ -42,7 +42,7 @@
 			session_start();
 
 			$this->url          = $this->parseURI($url);
-			self::$initial_page = self::$page = (isset($this->url[1]) && !empty($this->url[1])) ? $this->url[1] : self::DEFAULT_PAGE;
+			self::$initial_page = self::$page = (isset($this->url[0]) && !empty($this->url[0])) ? $this->url[0] : self::DEFAULT_PAGE;
 
 			$_URL     = $this->extractDataFromURL($this->url);
 			$_REQUEST = array_merge($_REQUEST, $_URL);
@@ -103,7 +103,7 @@
 
 		private function parseURI($uri)
 		{
-			$url = (self::WEBSITE_SUBDIRECTORY == null) ? $uri : strstr($uri, stripslashes(self::WEBSITE_SUBDIRECTORY));
+			$url = (self::WEBSITE_SUBDIRECTORY == null) ? $uri : str_replace(self::WEBSITE_SUBDIRECTORY, "", strstr($uri, self::WEBSITE_SUBDIRECTORY));
 			return explode('/', strstr($uri, $url));
 		}
 
