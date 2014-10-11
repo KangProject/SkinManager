@@ -1,12 +1,12 @@
 <?php namespace EphysCMS; ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<base href="<?= WEBSITE_ROOT ?>">
 
 	<meta name="keywords" lang="fr" content="skin, manage, favori, outadoc, ephyspotato, Minecraft">
-	<meta name="description" content="Changer de skin Minecraft en un clic! - Switch your Minecraft skin simply!">
+	<meta name="description" content="SkinSwitch's companion. Easily switch between your Minecraft skins!">
 
 	<title>Skin Manager</title>
 

@@ -4,12 +4,12 @@ body {
 
 #body {
 	overflow: auto;
-	transition: left linear 0.4s;
+	transition: margin-left ease-in-out 0.5s;
 	height: 100%;
-	width: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
+	right: 0;
 	background: rgb(69, 72, 77) url('../img/dark_wall.png');
 }
 
@@ -67,7 +67,7 @@ aside {
 	display: block;
 	height: 100%;
 
-	transition: left linear 0.4s;
+	transition: left ease-in-out 0.5s;
 
 	background-color: rgb(249, 252, 247);
 	text-align: center;
@@ -107,6 +107,7 @@ nav {
 	h1 {
 		float: left;
 		margin-left: 15px;
+		
 		a {
 			color: #c8c8c8;
 		}

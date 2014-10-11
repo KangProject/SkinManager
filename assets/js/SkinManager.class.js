@@ -66,7 +66,7 @@ SkinManager.prototype.registerListeners = function () {
 SkinManager.prototype.init = function () {
     var self = this;
 
-    $.post("json/", {method: "loadSKins", user: this.user_id}, function (data) {
+    $.post("json/", {method: "loadSkins", user: this.user_id}, function (data) {
         var json;
 
         try {
@@ -85,12 +85,12 @@ SkinManager.prototype.init = function () {
 
 SkinManager.prototype.showSkinList = function () {
     this.globalContainer.style.left = "0px";
-    document.getElementById("body").style.left = "215px";
+    document.getElementById("body").style.marginLeft = "215px";
 };
 
 SkinManager.prototype.hideSkinList = function () {
     this.globalContainer.style.left = "-215px";
-    document.getElementById("body").style.left = "0px";
+    document.getElementById("body").style.marginLeft = "0px";
 };
 
 SkinManager.prototype.toggleSkinList = function () {
