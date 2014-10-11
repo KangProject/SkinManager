@@ -49,10 +49,6 @@ select {
   font-size: 100%;
   line-height: normal;
   line-height: 23px;
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
   margin: 8px 0px;
   padding: 5px;
@@ -101,25 +97,16 @@ select {
   text-align: center;
   -webkit-box-sizing: border-box;
   *display: inline;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   *zoom: 1;
   *margin-left: .3em;
   margin-right: 3px;
   margin-left: 3px;
+  transition: background-position 0.1s linear;
+  background-color: #ffffff;
   background-repeat: repeat-x;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-color: #2f96b4 #2f96b4 #1f6377;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  -webkit-transition: background-position 0.1s linear;
-  -moz-transition: background-position 0.1s linear;
-  -ms-transition: background-position 0.1s linear;
-  -o-transition: background-position 0.1s linear;
-  transition: background-position 0.1s linear;
-  background-color: #ffffff;
 }
 button:active,
 input[type="submit"]:active,
@@ -306,11 +293,6 @@ form.form-vertical.large select {
 canvas {
   image-rendering: -webkit-optimize-contrast;
   background-image: url('../img/skinEditor_background.png');
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 .skin_preview {
   height: 200px;
@@ -342,14 +324,8 @@ span > object {
   position: relative;
   background-color: #efefef;
   box-shadow: 0px 0px 3px #bababa;
-  -moz-box-shadow: 0px 0px 3px #bababa;
   margin: 5px 15px;
   padding: 5px;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -401,10 +377,6 @@ span > object {
   bottom: 10px;
   left: -340px;
   z-index: 99;
-  -webkit-transition: left linear 0.3s;
-  -moz-transition: left linear 0.3s;
-  -ms-transition: left linear 0.3s;
-  -o-transition: left linear 0.3s;
   transition: left linear 0.3s;
   color: white;
   background-color: #285a8b;
@@ -423,13 +395,7 @@ span > object {
   width: 850px;
   margin-left: -425px;
   background-color: #f0f0f0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-  -webkit-transition: top linear 0.3s;
-  -moz-transition: top linear 0.3s;
-  -ms-transition: top linear 0.3s;
-  -o-transition: top linear 0.3s;
   transition: top linear 0.3s;
 }
 .modal canvas {

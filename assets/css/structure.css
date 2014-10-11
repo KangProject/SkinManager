@@ -3,10 +3,6 @@ body {
 }
 #body {
   overflow: auto;
-  -webkit-transition: left linear 0.4s;
-  -moz-transition: left linear 0.4s;
-  -ms-transition: left linear 0.4s;
-  -o-transition: left linear 0.4s;
   transition: left linear 0.4s;
   height: 100%;
   width: 100%;
@@ -36,10 +32,6 @@ footer {
   right: 0;
   bottom: -25px;
   overflow: hidden;
-  -webkit-transition: bottom linear 0.2s;
-  -moz-transition: bottom linear 0.2s;
-  -ms-transition: bottom linear 0.2s;
-  -o-transition: bottom linear 0.2s;
   transition: bottom linear 0.2s;
 }
 footer:hover {
@@ -62,10 +54,6 @@ aside {
   left: -215px;
   display: block;
   height: 100%;
-  -webkit-transition: left linear 0.4s;
-  -moz-transition: left linear 0.4s;
-  -ms-transition: left linear 0.4s;
-  -o-transition: left linear 0.4s;
   transition: left linear 0.4s;
   background-color: #f9fcf7;
   text-align: center;
@@ -95,13 +83,6 @@ aside input {
   bottom: 5px;
   left: 8px;
   width: 185px;
-}
-nav {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 nav h1 {
   float: left;
