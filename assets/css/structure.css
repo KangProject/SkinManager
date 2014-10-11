@@ -20,13 +20,13 @@ section {
   padding: 15px;
   overflow: hidden;
 }
+section#footer {
+  padding: 0;
+}
 section#footer p {
   text-align: center;
   padding: 0;
   margin: 10px;
-}
-section#footer {
-  padding: 0;
 }
 footer {
   position: fixed;
