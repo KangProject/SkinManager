@@ -9,12 +9,10 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #45484d;
-  background-image: url('../img/dark_wall.png');
+  background: #45484d url('../img/dark_wall.png');
 }
 section {
-  background-color: #f9fcf7;
-  background-image: url('../img/whitey.png');
+  background: #f9fcf7 url('../img/whitey.png');
   width: auto;
   min-height: 20px;
   margin: 25px auto;
