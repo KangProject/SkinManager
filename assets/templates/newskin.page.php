@@ -29,13 +29,12 @@
 
 				<h3><?= Language::translate('SKIN_LOAD') ?></h3>
 				<label for="skinURL"><?= Language::translate('SKIN_LOAD_URL') ?></label>
-				<input id="skinURL" name="url" type="text" placeholder="http://example.com/skin.png">
+				<input id="skinURL" name="url" type="text" placeholder="http://example.com/skin.png"><br>
 				<button class="btn-blue" id="btn_submitSkin"
 				        type="submit"><?= Language::translate('SKIN_LOAD_SUBMIT') ?></button>
 
 				<div id="uploadFile">
 					<label class="control-label" for="skinFile"><?= Language::translate('SKIN_LOAD_UPLOAD') ?></label>
-
 					<div id="skinFile"></div>
 				</div>
 			</form>

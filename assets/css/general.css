@@ -243,11 +243,15 @@ form select {
 form button {
   margin: 5px;
 }
+form .btn-blue {
+  margin-left: 20px;
+}
 form .fieldgroup-center {
   text-align: center;
   margin-top: 15px;
 }
-form .qq-upload-button {
+form .qq-upload-button,
+form button {
   width: 310px;
   margin: 20px;
 }
