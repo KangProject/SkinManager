@@ -92,15 +92,15 @@
 <h2>À propos de Skin Manager</h2>
 
 <p><b>Skin Manager</b> est une application web pour <a href="http://www.minecraft.net/">Minecraft</a> développée
-par <a href="https://twitter.com/EphysPotato">@EphysPotato</a> et <a href="https://twitter.com/outadoc">@outadoc</a>.
-Il vous permet d'enregistrer vos skins, et de passer de l'un à l'autre en quelques clics.
-Appuyez sur un simple bouton pour changer de skin !</p>
+par <a href="https://twitter.com/EphysPotato">@EphysPotato</a> et <a href="https://twitter.com/outadoc">@outadoc</a>.</p>
+<p>Il vous permet d'enregistrer vos skins, et de passer de l'un à l'autre en quelques clics.
+Appuyez sur un simple bouton pour changer de skin, au lieu de devoir passer par le site officiel à chaque fois !</p>
 <p>Skin Manager est également disponible pour smartphone en tant que <a href="http://dev.outadoc.fr/project/skinswitch">SkinSwitch</a>, sur iOS et Android.</p>
 aboutContent;
 	$_LANGUAGE['INTRO']                  = <<<intro
 	<p><b>SkinManager</b> vous permet de <b>gérer vos skins Minecraft</b> avec simplicité et de passer de l'un à l'autre,
-	de <b>switcher</b> entre vos skins pour votre compte Minecraft.
-	<br>Il vous permet également de regarder le profil des autres utilisateurs pour <b>trouver un skin</b> ainsi que de le
+	de <b>switcher</b> entre vos skins pour votre compte Minecraft.</p>
+	<p><br>Il vous permet également de regarder le profil des autres utilisateurs pour <b>trouver un skin</b> ainsi que de le
 	<b>modifier à loisir</b> afin d'obtenir ce qui vous correspond !
 	<br><br>En vous connectant, vous acceptez les <a href="terms_of_use/" target="_blank">conditions d'utilisation</a> de Skin Manager</p>
 intro;
