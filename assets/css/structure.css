@@ -16,14 +16,17 @@ section {
   width: auto;
   min-height: 20px;
   margin: 25px auto;
-  padding: 15px;
   clear: both;
+  padding: 15px;
   overflow: hidden;
 }
 section#footer p {
   text-align: center;
   padding: 0;
   margin: 10px;
+}
+section#footer {
+  padding: 0;
 }
 footer {
   position: fixed;
