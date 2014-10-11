@@ -2,7 +2,7 @@
 
 	namespace EphysCMS;
 
-	require_once('inc/skin_formater.inc.php');
+	require_once('inc/SkinFormatter.class.php');
 
 	$skinList     = scandir('../skins/');
 	$skinFormater = new SkinFormatter();

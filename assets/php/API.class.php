@@ -331,7 +331,7 @@
 
 		public function getPreview($url)
 		{
-			require_once(dirname(__FILE__) . '/inc/skin_creator.inc.php');
+			require_once(dirname(__FILE__) . '/inc/SkinCreator.class.php');
 
 			$uploader = new SkinCreator();
 			$uploader->upload_url($url, true);
@@ -398,7 +398,7 @@
 			if (!empty($errors))
 				return ['error' => $errors];
 
-			require_once(dirname(__FILE__) . '/inc/skin_creator.inc.php');
+			require_once(dirname(__FILE__) . '/inc/SkinCreator.class.php');
 
 			$uploader              = new SkinCreator();
 			$uploader->name        = $name;
@@ -430,7 +430,7 @@
 			if (!self::isLogged())
 				return ['error' => ['user not logged in']];
 
-			require_once(dirname(__FILE__) . '/inc/skin_creator.inc.php');
+			require_once(dirname(__FILE__) . '/inc/SkinCreator.class.php');
 
 			$uploader              = new SkinCreator();
 			$uploader->name        = $name;
@@ -445,7 +445,7 @@
 			if (!self::isLogged())
 				return ['error' => ['user not logged in']];
 
-			require_once dirname(__FILE__) . '/inc/skin_creator.inc.php';
+			require_once dirname(__FILE__) . '/inc/SkinCreator.class.php';
 			require_once dirname(__FILE__) . '/inc/qqFileUploader.class.php';
 
 			$uploader                    = new \qqFileUploader();
@@ -609,7 +609,7 @@
 			if ($image === false)
 				return ['error' => ['Invalid base image']];
 
-			require_once dirname(__FILE__) . '/inc/skin_creator.inc.php';
+			require_once dirname(__FILE__) . '/inc/SkinCreator.class.php';
 			$uploader = new SkinCreator();
 			return $uploader->updateSkin($image, $id);
 		}
@@ -639,8 +639,7 @@
 				$minecraft_password = $crypter->decrypt($data['minecraft_password']);
 
 				$skinswitch = new SkinSwitcher($data['minecraft_username'], $minecraft_password);
-
-				$result = $skinswitch->switchSkin($url, $model);
+				$result     = $skinswitch->switchSkin($url, $model);
 
 				if ($result !== true)
 					return ['error' => [$result]];
