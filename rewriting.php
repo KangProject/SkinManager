@@ -41,8 +41,18 @@
 
 			session_start();
 
-			$this->url          = $this->parseURI($url);
-			self::$initial_page = self::$page = (isset($this->url[0]) && !empty($this->url[0])) ? $this->url[0] : self::DEFAULT_PAGE;
+			$this->url = $this->parseURI($url);
+
+			//if we're changing the language, insert an empty page in the first index of the array
+			if (isset($this->url[0]) && $this->url[0] === 'l') {
+				array_splice($this->url, 0, 0, array(''));
+			}
+
+			if (isset($this->url[0]) && !empty($this->url[0])) {
+				self::$initial_page = self::$page = $this->url[0];
+			} else {
+				self::$initial_page = self::$page = self::DEFAULT_PAGE;
+			}
 
 			$_URL     = $this->extractDataFromURL($this->url);
 			$_REQUEST = array_merge($_REQUEST, $_URL);
@@ -93,7 +103,7 @@
 			} else {
 				include_once ROOT . 'assets/' . self::DIR_TEMPLATES . '/header.tpl.php';
 				include_once ROOT . 'assets/' . self::DIR_TEMPLATES . '/' . self::$page . '.page.php';
-				include_once ROOT . 'assets/' . self::DIR_TEMPLATES . '/' . 'footer.tpl.php';
+				include_once ROOT . 'assets/' . self::DIR_TEMPLATES . '/footer.tpl.php';
 			}
 
 			//now, headers has been sent, it's time to send buffer to the output, let's flush !
@@ -108,7 +118,7 @@
 
 		private function parseURI($uri)
 		{
-			$url = (self::WEBSITE_SUBDIRECTORY == null) ? $uri : str_replace(self::WEBSITE_SUBDIRECTORY, "", strstr($uri, self::WEBSITE_SUBDIRECTORY));
+			$url = (self::WEBSITE_SUBDIRECTORY == null) ? $uri : str_replace(self::WEBSITE_SUBDIRECTORY, '', strstr($uri, self::WEBSITE_SUBDIRECTORY));
 			return empty($url) ? null : explode('/', strstr($uri, $url));
 		}
 
