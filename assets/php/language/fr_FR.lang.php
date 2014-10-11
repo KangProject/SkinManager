@@ -91,12 +91,18 @@
 	$_LANGUAGE['ABOUT']                  = <<<aboutContent
 <h2>À propos de Skin Manager</h2>
 
-<p><b>Skin Manager</b> est une application en ligne pour <a href="http://www.minecraft.net/">Minecraft</a> développé par <a href="http://dlp.fr.nf/">@EphysPotato</a>. Il permet aux joueurs d'enregistrer leurs skins, et de pouvoir passer de l'un à l'autre simplement. Appuyez sur un simple bouton pour changer de skin !</p>
-<p>Cette application est inspirée de la version iOS de <a href="http://itunes.apple.com/fr/app/skinswitch-for-minecraft/id524911308">SkinSwitch</a> dévelopée par <a href="http://dev.outadoc.fr/">@outadoc</a>.</p>
+<p><b>Skin Manager</b> est une application en ligne pour <a href="http://www.minecraft.net/">Minecraft</a> développé
+par <a href="http://dlp.fr.nf/">@EphysPotato</a>. Il permet aux joueurs d'enregistrer leurs skins, et de pouvoir passer
+de l'un à l'autre simplement. Appuyez sur un simple bouton pour changer de skin !</p>
+<p>Cette application est inspirée de la version iOS de
+<a href="http://itunes.apple.com/fr/app/skinswitch-for-minecraft/id524911308">SkinSwitch</a> dévelopée
+par <a href="http://dev.outadoc.fr/">@outadoc</a>.</p>
 aboutContent;
 	$_LANGUAGE['INTRO']                  = <<<intro
-	<p><b>SkinManager</b> vous offre la possibilité de <b>gérer vos skins</b> avec simplicité et de passer de l'un à l'autre, de <b>switcher</b> entre vos skins pour votre compte Minecraft.
-	<br>Il vous permet également de regarder le profil des autres utilisateurs pour <b>trouver un skin</b> ainsi que de le <b>modifier à loisir</b> afin d'obtenir ce qui vous correspond !
+	<p><b>SkinManager</b> vous offre la possibilité de <b>gérer vos skins</b> avec simplicité et de passer de l'un à l'autre,
+	de <b>switcher</b> entre vos skins pour votre compte Minecraft.
+	<br>Il vous permet également de regarder le profil des autres utilisateurs pour <b>trouver un skin</b> ainsi que de le
+	<b>modifier à loisir</b> afin d'obtenir ce qui vous correspond !
 	<br><br>En vous connectant, vous acceptez les <a href="terms_of_use/" target="_blank">conditions d'utilisation</a> de Skin Manager</p>
 intro;
 ?>

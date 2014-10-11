@@ -32,7 +32,7 @@
 
 	$_LANGUAGE['PROFILES_BTN']           = 'Users';
 	$_LANGUAGE['LOGIN']                  = 'Log in';
-	$_LANGUAGE['REGISTER']               = 'Register';
+	$_LANGUAGE['REGISTER']               = 'Sign Up';
 	$_LANGUAGE['LOGIN_WAIT']             = 'Logging in...';
 	$_LANGUAGE['LOGIN_PASSWORD']         = 'Password';
 	$_LANGUAGE['ERROR_LOGIN']            = 'Unregistered username';
@@ -48,7 +48,7 @@
 	$_LANGUAGE['SEARCH']                 = 'Search';
 	$_LANGUAGE['SEARCH_USER']            = 'Search by user';
 	$_LANGUAGE['ACCOUNT']                = 'Account';
-	$_LANGUAGE['ACCOUNT_MIGRATED']       = 'Your account has migrated. Please use your email address';
+	$_LANGUAGE['ACCOUNT_MIGRATED']       = 'Your account has been migrated. Please use your email address instead of your username.';
 	$_LANGUAGE['EDIT']                   = 'Edit';
 	$_LANGUAGE['SKIN_LIST']              = 'Skin List';
 	$_LANGUAGE['SKIN_ADD']               = 'Add a skin';
@@ -85,18 +85,20 @@
 	$_LANGUAGE['FIND_USERNAME']          = 'Username...';
 	$_LANGUAGE['ABOUT_BTN']              = 'About';
 	$_LANGUAGE['DISCONNECT']             = 'Logout';
-	$_LANGUAGE['ACCOUNT_DELETE_CONFIRM'] = 'Warning! By doing this, you will lose all the data saved on this website.';
+	$_LANGUAGE['ACCOUNT_DELETE_CONFIRM'] = 'Warning! By doing this, you will lose all your data saved on this website.';
 	$_LANGUAGE['NO_SKINLIST']            = 'No Skin Available';
 	$_LANGUAGE['CASE_SENSITIVE']         = 'Case sensitive';
 	$_LANGUAGE['ABOUT']                  = <<<aboutContent
 <h2>About Skin Manager</h2>
 
-<p><b>Skin Manager</b> is a web-based tool for <a href="http://www.minecraft.net/">Minecraft</a> developed by <a href="http://dlp.fr.nf/">@EphysPotato</a>. Its purpose is to allow Minecraft players to save their skin and let them easily switch between these, only by pressing a single button instead of uploading the skin every time.</p>
-<p>This tool is based on <a href="http://dev.outadoc.fr/">@outadoc</a>'s iOS version of it: <a href="http://itunes.apple.com/fr/app/skinswitch-for-minecraft/id524911308">SkinSwitch</a></p>
+<p><b>Skin Manager</b> is a web-based tool for <a href="http://www.minecraft.net/">Minecraft</a> developed by
+<a href="http://dlp.fr.nf/">@EphysPotato</a>. Its purpose is to allow Minecraft players to save their skin and let them
+easily switch between these, only by pressing a single button instead of uploading the skin every time.</p>
+<p>This tool is based on <a href="http://dev.outadoc.fr/">@outadoc</a>'s iOS version of it:
+<a href="http://itunes.apple.com/fr/app/skinswitch-for-minecraft/id524911308">SkinSwitch</a></p>
 aboutContent;
 	$_LANGUAGE['INTRO']                  = <<<intro
 	<p><b>SkinManager</b> allows you to <b>manage your skins</b> easily and to <b>switch</b> your ingame skin from one to another easily.
 	<br>If you don't have your own skin, you may also view the other members's skin list to <b>find</b> and <b>freely edit</b> the one that matches you !
-	<br><br>By logging in, you accept the <a href="terms_of_use/">Terms of Use [FR]</a> of Skin Manager</p>
+	<br><br>By logging in, you accept the <a href="terms_of_use/">Terms of Use [FR]</a> of Skin Manager.</p>
 intro;
-?>
