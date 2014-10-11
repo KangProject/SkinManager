@@ -55,7 +55,7 @@
 			}
 
 			define('ROOT', dirname(__FILE__) . '/');
-			define('PAGE_RELATIVE', str_repeat('../', count($this->url) - 2) . self::$page . '/');
+			define('PAGE_RELATIVE', WEBSITE_ROOT . self::$page . '/');
 
 			$this->loadModules();
 			self::setResponseCode($this->getDefaultResponseCode());
@@ -104,16 +104,17 @@
 		private function parseURI($uri)
 		{
 			$url = (self::WEBSITE_SUBDIRECTORY == null) ? $uri : str_replace(self::WEBSITE_SUBDIRECTORY, "", strstr($uri, self::WEBSITE_SUBDIRECTORY));
-			return explode('/', strstr($uri, $url));
+			return empty($url) ? null : explode('/', strstr($uri, $url));
 		}
 
 		private function extractDataFromURL($url)
 		{
-			if (!is_array($url))
+			if (!is_array($url)) {
 				return array();
+			}
 
 			$getList = array();
-			$offset  = 2;
+			$offset  = 1;
 
 			$unparsedGet = array_slice($url, $offset, count($url) - $offset);
 
