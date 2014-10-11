@@ -5,14 +5,18 @@ var Editor = function (image, scale, canvas, tools) {
     this.context = canvas.getContext('2d');
     this.canvas = canvas;
 
-    workspace.width = 64;
-    workspace.height = 32;
-    canvas.width = 64 * scale;
-    canvas.height = 32 * scale;
+    this.skinWidth = 64;
+    this.skinHeight = 64;
+
+    workspace.width = this.skinWidth;
+    workspace.height = this.skinHeight;
+
+    canvas.width = this.skinWidth * scale;
+    canvas.height = this.skinHeight * scale;
 
     this.context.clearRect(0, 0, canvas.width, canvas.height);
     this.workcontext.drawImage(image, 0, 0);
-    this.data = this.workcontext.getImageData(0, 0, 64, 32);
+    this.data = this.workcontext.getImageData(0, 0, this.skinWidth, this.skinHeight);
     this.scale = scale;
 
     this.tamponData = null;
@@ -243,13 +247,13 @@ Editor.prototype.handleMouse = function () {
                         var pixelList_y = self.tamponData[i];
 
                         var posx = startpos_x + i;
-                        if (posx < 0 || posx > 63)
+                        if (posx < 0 || posx > this.skinWidth - 1)
                             continue;
                         for (var j = 0; j < pixelList_y.length; j++) {
                             var pixel = pixelList_y[j];
 
                             var posy = startpos_y + j;
-                            if (posy < 0 || posy > 31)
+                            if (posy < 0 || posy > this.skinHeight - 1)
                                 continue;
 
                             self.setPixel(startpos_x + i, startpos_y + j, pixel.r, pixel.g, pixel.b, pixel.a * 255);
@@ -378,7 +382,7 @@ Editor.prototype.stopRendering = function () {
 };
 
 Editor.prototype.clear = function () {
-    this.context.clearRect(0, 0, 64 * this.scale, 32 * this.scale);
+    this.context.clearRect(0, 0, this.skinWidth * this.scale, this.skinHeight * this.scale);
 };
 
 Editor.prototype.draw = function () {
@@ -406,13 +410,13 @@ Editor.prototype.readPixels_cursorSize = function (r, g, b, a) {
     var pixelList = [];
     for (var i = -halfCursor; i < halfCursor + offset; i++) {
         var posx = this.pos.x + i;
-        if (posx < 0 || posx > 63)
+        if (posx < 0 || posx > this.skinWidth - 1)
             continue;
 
         var pixelList_y = [];
         for (var j = -halfCursor; j < halfCursor + offset; j++) {
             var posy = this.pos.y + j;
-            if (posy < 0 || posy > 31)
+            if (posy < 0 || posy > this.skinHeight - 1)
                 continue;
 
 
@@ -431,12 +435,12 @@ Editor.prototype.setPixels_cursorSize = function (r, g, b, a) {
 
     for (var i = -halfCursor; i < halfCursor + offset; i++) {
         var posx = this.pos.x + i;
-        if (posx < 0 || posx > 63)
+        if (posx < 0 || posx > this.skinWidth - 1)
             continue;
 
         for (var j = -halfCursor; j < halfCursor + offset; j++) {
             var posy = this.pos.y + j;
-            if (posy < 0 || posy > 31)
+            if (posy < 0 || posy > this.skinHeight - 1)
                 continue;
 
             this.setPixel(posx, posy, r, g, b, a);
@@ -493,7 +497,7 @@ Editor.prototype.toggleRules = function () {
 };
 
 // Export
-Editor.prototype.export = function () {
+Editor.prototype.exportSkin = function () {
     this.workcontext.putImageData(this.data, 0, 0);
     return this.workcontext.canvas.toDataURL('image/png');
 };

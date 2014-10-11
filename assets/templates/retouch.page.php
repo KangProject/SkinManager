@@ -6,8 +6,10 @@
 		if (isset($_URL['skin']) && is_numeric($_URL['skin'])) {
 			$bdd   = Database::getInstance();
 			$query = $bdd->prepare('SELECT * FROM `skins` WHERE `owner` = :owner AND `id` = :id');
+
 			$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
 			$query->bindParam(':id', $_URL['skin'], \PDO::PARAM_INT);
+
 			$query->execute();
 			$skin = $query->fetch(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
@@ -89,7 +91,7 @@
 								'cusor_size': document.getElementById('cursor_size')
 							};
 
-							editor = new Editor(this, 14, document.getElementById('canvas'), tools);
+							editor = new Editor(this, 10, document.getElementById('canvas'), tools);
 							var saveBtn = document.getElementById('save');
 							saveBtn.addEventListener('click', function (e) {
 								e.preventDefault();
@@ -97,7 +99,7 @@
 
 								$.post('json/', {
 									method: 'updateSkin',
-									image_b64: editor.export(),
+									image_b64: editor.exportSkin(),
 									id: <?=$_URL['skin']?>
 								}, function (data) {
 									try {
