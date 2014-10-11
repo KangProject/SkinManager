@@ -37,9 +37,7 @@
 
 				if (!is_array($skin_id)) {
 					$image = file_get_contents($url);
-
 					$this->updateSkin($image, $skin_id);
-
 					return ['success' => true, 'error' => false, 'id' => $skin_id];
 				} else {
 					return $skin_id;
@@ -69,16 +67,24 @@
 			return $bdd->lastInsertId();
 		}
 
-		public function updateSkin($skin, $skin_id)
+		public function updateSkin($skin, $skinId)
 		{
-			file_put_contents(dirname(__FILE__) . '/../../skins/' . $skin_id . '.png', $skin);
+			$this->deleteSkinPreview($skinId);
+			file_put_contents(ROOT . 'assets/skins/' . $skinId . '.png', $skin);
 
 			$skinFormater = new SkinFormatter();
 			$skinFormater->setSkinData(imagecreatefromstring($skin));
-			$skinFormater->createSkinBack(dirname(__FILE__) . '/../../skins/2D/' . $skin_id . '.png.back', 0.5);
-			$skinFormater->createSkinFront(dirname(__FILE__) . '/../../skins/2D/' . $skin_id . '.png', 0.5);
+			$skinFormater->createSkinBack(ROOT . 'assets/skins/2D/' . $skinId . '.png.back', 0.5);
+			$skinFormater->createSkinFront(ROOT . 'assets/skins/2D/' . $skinId . '.png', 0.5);
 			$skinFormater->clearSkin();
 
 			return ['error' => false];
+		}
+
+		public function deleteSkinPreview($skinId)
+		{
+			@unlink(ROOT . 'assets/skins/' . $skinId . '.png');
+			@unlink(ROOT . 'assets/skins/2D/' . $skinId . '.png');
+			@unlink(ROOT . 'assets/skins/2D/' . $skinId . '.png.back');
 		}
 	}
