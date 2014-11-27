@@ -118,7 +118,7 @@
 
 		private function parseURI($uri)
 		{
-			$url = (self::WEBSITE_SUBDIRECTORY == null) ? $uri : str_replace(self::WEBSITE_SUBDIRECTORY, '', strstr($uri, self::WEBSITE_SUBDIRECTORY));
+			$url = (self::WEBSITE_SUBDIRECTORY == null) ? $uri : preg_replace('#' . self::WEBSITE_SUBDIRECTORY . '#', '', strstr($uri, self::WEBSITE_SUBDIRECTORY), 1);
 			return empty($url) ? null : explode('/', strstr($uri, $url));
 		}
 
