@@ -5,12 +5,12 @@
 	require_once('inc/Database.class.php');
 
 	$db    = Database::getInstance();
-	$query = $db->query('SELECT `id` FROM `skins`');
+	$query = $db->query('SELECT `id` FROM `sm_skins`');
 	$i     = 0;
 
 	while ($skin = $query->fetch(\PDO::FETCH_ASSOC)) {
 		if (!file_exists('../skins/' . $skin['id'] . '.png')) {
-			$db->exec('DELETE FROM `skins` WHERE `id` = ' . $skin['id'] . ' LIMIT 1');
+			$db->exec('DELETE FROM `sm_skins` WHERE `id` = ' . $skin['id'] . ' LIMIT 1');
 			$i++;
 		}
 	}

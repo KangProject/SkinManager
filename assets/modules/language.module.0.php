@@ -57,7 +57,7 @@
 			if (isset($_SESSION['user_id']) && isset($_URL['l']) && ($_URL['l'] != $_SESSION['language'])) {
 				$bdd = Database::getInstance();
 
-				$query = $bdd->prepare('UPDATE `members` SET `language` = :language WHERE `id` = :id');
+				$query = $bdd->prepare('UPDATE `sm_members` SET `language` = :language WHERE `id` = :id');
 				$query->bindParam(':language', $_URL['l'], \PDO::PARAM_STR);
 				$query->bindParam(':id', $_SESSION['user_id'], \PDO::PARAM_INT);
 				$query->execute();
