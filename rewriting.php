@@ -57,12 +57,7 @@
 			$_URL     = $this->extractDataFromURL($this->url);
 			$_REQUEST = array_merge($_REQUEST, $_URL);
 
-			if (!self::DEV_MODE) {
-				ob_start("self::sanitize_output");
-				header('Content-Encoding: gzip');
-			} else {
-				ob_start();
-			}
+			ob_start();
 
 			define('ROOT', dirname(__FILE__) . '/');
 
@@ -202,15 +197,6 @@
 		public static function setPage($page)
 		{
 			self::$page = $page;
-		}
-
-		private function sanitize_output($buffer)
-		{
-			$search  = array('/\s+/');
-			$replace = array(' ');
-			$buffer  = preg_replace($search, $replace, $buffer);
-
-			return ob_gzhandler($buffer, 5);
 		}
 
 	}
