@@ -54,7 +54,7 @@
 				$this->description = '';
 
 			$bdd   = Database::getInstance();
-			$query = $bdd->prepare('INSERT INTO skins(`owner`, `title`, `description`, `model`) VALUES(:owner, :title, :description, :model)');
+			$query = $bdd->prepare('INSERT INTO sm_skins(`owner`, `title`, `description`, `model`) VALUES(:owner, :title, :description, :model)');
 
 			$query->bindParam(':owner', $_SESSION['user_id'], \PDO::PARAM_INT);
 			$query->bindParam(':title', $this->name, \PDO::PARAM_STR);
