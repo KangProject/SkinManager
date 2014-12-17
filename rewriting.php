@@ -8,7 +8,7 @@
 		const WEBSITE_SUBDIRECTORY = "SkinManager/";
 
 		const WEBSITE_ROOT_DEV = "http://localhost/dev/web/SkinManager/";
-		const WEBSITE_ROOT_PROD = "http://skin.outadoc.fr/";
+		const WEBSITE_ROOT_PROD = "//skin.outadoc.fr/";
 
 		const DEFAULT_PAGE = 'home';
 		const DIR_MODULES = 'modules';

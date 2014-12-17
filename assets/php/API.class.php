@@ -11,7 +11,7 @@
 	class API
 	{
 		private $refl = null;
-		private $allowedOrigins = ['http://skin.outadoc.fr', 'http://skin', 'http://localhost'];
+		private $allowedOrigins = ['http://skin.outadoc.fr', 'https://skin.outadoc.fr', 'http://localhost'];
 
 		public function __construct()
 		{
