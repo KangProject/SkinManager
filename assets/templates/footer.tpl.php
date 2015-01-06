@@ -1,7 +1,7 @@
 <section id="footer">
 	<p>
-		&copy; <a href="http://ephys.fr.nf">DLProduction</a> 2012 - 2014,
-		&copy; <a href="http://dev.outadoc.fr">outa[dev]</a> <?php echo date('Y'); ?>
+		&copy; <a href="http://ephys.fr.nf">DLProduction</a> 2012 &ndash; 2014,
+		&copy; <a href="https://dev.outadoc.fr">outa[dev]</a> 2014 &ndash; <?php echo date('Y'); ?>
 		- <a href="api/">API</a>
 	</p>
 </section>
